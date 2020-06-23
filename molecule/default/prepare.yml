@@ -1,0 +1,10 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: Install dependencies
+      apt:
+        name:
+          - sudo      # for `become` privilege escalation
+          - iproute2  # for gathering network facts
+        state: present

@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include keepalived_role"
+      include_role:
+        name: "keepalived_role"
+
+...

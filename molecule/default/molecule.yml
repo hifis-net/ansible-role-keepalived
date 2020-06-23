@@ -1,0 +1,25 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: instance_keepalived
+    image: jrei/systemd-ubuntu:20.04
+    pre_build_image: true
+    privileged: true
+    override_command: false
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+lint: |
+  yamllint --strict --format colored .
+  ansible-lint -v --force-color
+provisioner:
+  name: ansible
+  playbooks:
+    prepare: prepare.yml
+    converge: converge.yml
+verifier:
+  name: ansible
+
+...
