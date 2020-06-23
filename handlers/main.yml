@@ -1,2 +1,8 @@
 ---
-# handlers file for keepalived_role
+
+- name: Restart Keepalived
+  become: yes
+  become_user: root
+  service: "name={{ keepalived_name }} state=restarted"
+
+...

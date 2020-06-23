@@ -1,2 +1,162 @@
 ---
-# tasks file for keepalived_role
+
+- name: Check whether Keepalived is installed.
+  stat:
+    path: "{{ keepalived_path }}"
+  register: keepalived_installed
+
+- name: Check keepalived version.
+  command:
+    cmd: "{{ keepalived_path }} --version"
+  register: keepalived_version_installed
+  when: keepalived_installed.stat.exists
+  changed_when: false
+
+- name: Output version strings.
+  debug:
+    msg: "Installed version: {{ keepalived_version_installed }}"
+  when: keepalived_installed.stat.exists
+
+- name: Determine version string.
+  set_fact:
+    installed_keepalived_version: "{{ keepalived_version_installed.stderr | regex_search('^Keepalived v[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{1,2}') }}"
+  when: keepalived_installed.stat.exists
+
+- name: Determine reduced version string.
+  set_fact:
+    reduced_installed_keepalived_version: "{{ installed_keepalived_version[12:] }}"
+  when: installed_keepalived_version is defined
+
+- name: Output version strings.
+  debug:
+    msg: "Installed version: {{ reduced_installed_keepalived_version }}, version to be installed: {{ keepalived_version_string }}."
+  when: installed_keepalived_version is defined
+
+- name: Check if version strings are equal.
+  set_fact:
+    is_keepalived_version_equal: "{{ reduced_installed_keepalived_version is version(keepalived_version_string, operator='==', strict=True) }}"
+  when: keepalived_installed.stat.exists
+
+- name: Continue if Keepalived is not installed or versions are not equal.
+  when: not keepalived_installed.stat.exists or (keepalived_installed.stat.exists and not (is_keepalived_version_equal|bool))
+  block:
+    - name: Install dependencies.
+      become: yes
+      become_user: root
+      package:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      with_items: "{{ keepalived_dependencies }}"
+
+    - name: Check if Keepalived version directory exists.
+      stat:
+        path: "{{ keepalived_tmp_dir }}{{ keepalived_build_folder }}"
+      register: keepalived_version_directory
+
+    - name: Delete version folder if already existing.
+      become: yes
+      become_user: root
+      file:
+        path: "{{ keepalived_tmp_dir }}{{ keepalived_build_folder }}"
+        state: absent
+      when: keepalived_version_directory.stat.isdir is defined and keepalived_version_directory.stat.isdir
+
+    - name: Check if Keepalived build directory exists.
+      stat:
+        path: "{{ keepalived_tmp_dir }}{{ keepalived_build_folder }}"
+      register: keepalived_build_directory
+
+    - name: Delete build folder if already existing.
+      become: yes
+      become_user: root
+      file:
+        path: "{{ keepalived_tmp_dir }}{{ keepalived_build_folder }}"
+        state: absent
+      when: keepalived_build_directory.stat.isdir is defined and keepalived_build_directory.stat.isdir
+
+    - name: Download and extract keepalived-{{ keepalived_version_string }}.tar.gz into /tmp.
+      become: yes
+      become_user: root
+      unarchive:
+        src: "{{ keepalived_download_url }}"
+        dest: "{{ keepalived_tmp_dir }}"
+        remote_src: yes
+
+# Documentation:
+# https://www.keepalived.org/doc/installing_keepalived.html#compiling-and-building-from-source
+
+    - name: Rename Directory.
+      become: yes
+      become_user: root
+      command:
+        cmd: "mv {{ keepalived_tmp_dir }}{{ keepalived_build_folder }} {{ keepalived_base_folder }}{{ keepalived_build_folder }}"
+
+    - name: Configure Keepalived.
+      become: yes
+      become_user: root
+      command: "./configure --prefix={{ keepalived_base_folder }}{{ keepalived_build_folder }}"
+      args:
+        chdir: "{{ keepalived_base_folder }}{{ keepalived_build_folder }}"
+
+    - name: Build Keepalived.
+      become: yes
+      become_user: root
+      make:
+        chdir: "{{ keepalived_base_folder }}{{ keepalived_build_folder }}"
+
+    - name: Install Keepalived.
+      become: yes
+      become_user: root
+      make:
+        chdir: "{{ keepalived_base_folder }}{{ keepalived_build_folder }}"
+        target: install
+
+    - name: Create Init Script.
+      become: yes
+      become_user: root
+      template:
+        src: keepalived.init.j2
+        dest: /etc/init.d/keepalived.init
+        mode: 0755
+
+    - name: Create a symbolic link.
+      become: yes
+      become_user: root
+      file:
+        src: /etc/init.d/keepalived.init
+        dest: /etc/rc2.d/S99keepalived
+        state: link
+        mode: 0755
+
+    - name: Create Keepalived Configuration Directory.
+      become: yes
+      become_user: root
+      file:
+        path: "{{ keepalived_conf_dir }}"
+        state: directory
+        mode: 0755
+
+    - name: Create Config File.
+      become: yes
+      become_user: root
+      template:
+        src: keepalived.conf.j2
+        dest: "{{ keepalived_conf_dir }}{{ keepalived_name }}.conf"
+        mode: 0644
+
+    - name: Copy Keepalived Service File.
+      become: yes
+      become_user: root
+      copy:
+        src: "{{ keepalived_base_folder }}{{ keepalived_build_folder }}{{ keepalived_folder }}{{ keepalived_service_template }}"
+        dest: "{{ keepalived_systemd_folder }}{{ keepalived_service_file }}"
+        remote_src: yes
+
+#    - name: Register Keepalived Service.
+#      become: yes
+#      become_user: root
+#      service: "name={{ keepalived_name }} state=started enabled=yes"
+#      notify: Restart Keepalived
+
+...

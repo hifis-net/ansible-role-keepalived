@@ -1,0 +1,25 @@
+global_defs {
+    notification_email {
+        c.hueser@hzdr.de
+    }
+    notification_email_from keepalived@localhost
+    smtp_server 127.0.0.1
+    smtp_connect_timeout 30
+}
+
+vrrp_instance VI_1 {
+    smtp_alert
+}
+
+virtual_server 10.0.0.1 80 {
+    delay_loop 6
+    lb_algo rr
+    lb_kind NAT
+    protocol TCP
+
+    real_server 192.168.33.14 80 {
+        TCP_CHECK {
+                connect_timeout 10
+        }
+    }
+}
