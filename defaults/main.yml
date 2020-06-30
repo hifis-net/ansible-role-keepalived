@@ -1,7 +1,7 @@
 ---
 
 # Keepalived version
-keepalived_version_string: '1.3.9'
+keepalived_version_string: '2.1.3'
 # List of dependencies of Keepalived
 keepalived_dependencies:
   - 'build-essential'
@@ -37,5 +37,30 @@ keepalived_service_template: 'keepalived.service'
 keepalived_systemd_folder: '/etc/systemd/system/'
 # Name of Redis Server service file
 keepalived_service_file: 'keepalived.service'
+
+# Keepalived configuration file variables:
+
+#
+notification_email: 'c.hueser@hzdr.de'
+#
+router_id: 'HELMHOLTZ_GITLAB_HAPROXY_1'
+#
+weight: '2'
+#
+interface: 'enp0s8'
+#
+state: 'MASTER'
+#
+priority: '200'
+#
+virtual_router_id: '123'
+#
+unicast_src_ip: '192.168.33.14'
+#
+unicast_peer: '192.168.33.15'
+#
+virtual_ipaddress: '192.168.33.100/24 dev enp0s8'
+#
+auth_pass: 'changeme'
 
 ...

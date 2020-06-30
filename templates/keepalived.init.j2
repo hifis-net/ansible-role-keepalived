@@ -7,12 +7,12 @@
 # Required-Start:    $syslog $network $remote_fs
 # Required-Stop:     $syslog $network $remote_fs
 # Default-Start:     2 3 4 5
-# Default-Stop:      1
+# Default-Stop:      0 S 1 6
 # Short-Description: Starts {{ keepalived_name }}
 # Description:       Starts {{ keepalived_name }} lvs loadbalancer
 ### END INIT INFO
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local
-DAEMON={{ keepalived_path }}
+DAEMON={{ keepalived_path }} --dont-fork
 NAME={{ keepalived_name }}
 DESC={{ keepalived_name }}
 CONFIG={{ keepalived_conf_dir }}{{ keepalived_name }}.conf
@@ -21,7 +21,7 @@ PIDFILE=/var/run/$NAME.pid
 case "$1" in
     start)
         echo "Start Daemon"
-        $DAEMON -f $CONFIG
+        exec $DAEMON -f $CONFIG
         ;;
     stop)
         echo "Stop Daemon"
@@ -31,7 +31,7 @@ case "$1" in
         echo "Restart Daemon"
         kill `cat $PIDFILE`
         sleep 3
-        $DAEMON -f $CONFIG
+        exec $DAEMON -f $CONFIG
         ;;
     *)
        echo "Usage: /etc/init.d/$NAME {start|stop|restart}" >&2

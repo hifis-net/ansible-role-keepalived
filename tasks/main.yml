@@ -153,10 +153,10 @@
         dest: "{{ keepalived_systemd_folder }}{{ keepalived_service_file }}"
         remote_src: yes
 
-#    - name: Register Keepalived Service.
-#      become: yes
-#      become_user: root
-#      service: "name={{ keepalived_name }} state=started enabled=yes"
-#      notify: Restart Keepalived
+    - name: Register Keepalived Service.
+      become: yes
+      become_user: root
+      service: "name={{ keepalived_name }} state=started enabled=yes"
+      notify: Restart Keepalived
 
 ...
