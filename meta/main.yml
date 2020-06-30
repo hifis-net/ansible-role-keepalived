@@ -7,7 +7,7 @@ galaxy_info:
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
-  issue_tracker_url: https://gitlab.com/hifis/ansible/keepalived-role
+  issue_tracker_url: https://gitlab.com/hifis/ansible/keepalived-role/-/issues
 
   # Choose a valid license ID from https://spdx.org - some suggested licenses:
   # - BSD-3-Clause (default)
@@ -43,7 +43,6 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - eoan
         - focal
 
   galaxy_tags: []

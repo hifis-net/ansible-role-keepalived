@@ -1,7 +1,7 @@
 ---
 
 # Keepalived version
-keepalived_version_string: '2.1.3'
+keepalived_version: '2.1.3'
 # List of dependencies of Keepalived
 keepalived_dependencies:
   - 'build-essential'
@@ -13,30 +13,36 @@ keepalived_dependencies:
   - 'libsnmp-dev'
 # IP address of Keepalived
 keepalived_instance_ip: "{{ ansible_default_ipv4.address }}"
-#
-keepalived_base_folder: '/usr/local/'
+# Folder to put the Keepalived installation into
+keepalived_base_dir: '/usr/local/'
 # Name of Keepalived
 keepalived_name: 'keepalived'
-#
-keepalived_folder: 'keepalived/'
-# Renamed folder which contains Keepalived
-keepalived_build_folder: '{{ keepalived_name }}-{{ keepalived_version_string }}/'
-#
-keepalived_sbin_folder: 'sbin/'
-# Folder in which Keepalived is installed
-keepalived_path: "{{ keepalived_base_folder }}{{ keepalived_build_folder }}{{ keepalived_sbin_folder }}{{ keepalived_name }}"
-# Temporary folder in which Keepalived is downloaded
-keepalived_tmp_dir: '/tmp/'
+# Folder which contains Keepalived sources
+keepalived_dir: 'keepalived/'
+# Folder which contains Keepalived
+keepalived_build_dir: "{{ keepalived_name }}-{{ keepalived_version }}/"
+# Path to Keepalived build folder
+keepalived_build_dir_path: "{{ keepalived_base_dir }}{{ keepalived_build_dir }}"
+# Folder which contains the keepalived binaries
+keepalived_sbin_dir: 'sbin/'
+# Path to Keepalived binary
+keepalived_path: "{{ keepalived_base_dir }}{{ keepalived_build_dir }}{{ keepalived_sbin_dir }}{{ keepalived_name }}"
 # URL from which Keepalived can be downloaded
-keepalived_download_url: "https://www.keepalived.org/software/keepalived-{{ keepalived_version_string }}.tar.gz"
-#
+keepalived_download_url: "https://www.keepalived.org/software/keepalived-{{ keepalived_version }}.tar.gz"
+# Folder for configuration files
 keepalived_conf_dir: '/etc/keepalived/'
+# Path to Keepalived confiuration file
+keepalived_conf_file_path: "{{ keepalived_conf_dir }}{{ keepalived_name }}.conf"
 # Name of the template file for Systemd service
 keepalived_service_template: 'keepalived.service'
 # Folder into which Redis service file is copied
-keepalived_systemd_folder: '/etc/systemd/system/'
+keepalived_systemd_dir: '/etc/systemd/system/'
 # Name of Redis Server service file
 keepalived_service_file: 'keepalived.service'
+# Path to Keepalived service template file
+keepalived_service_template_file_path: "{{ keepalived_base_dir }}{{ keepalived_build_dir }}{{ keepalived_dir }}{{ keepalived_service_file }}"
+# Path to Keepalived service file
+keepalived_service_file_path: "{{ keepalived_systemd_dir }}{{ keepalived_service_file }}"
 
 # Keepalived configuration file variables:
 
@@ -59,7 +65,7 @@ unicast_src_ip: '192.168.33.14'
 #
 unicast_peer: '192.168.33.15'
 #
-virtual_ipaddress: '192.168.33.100/24 dev enp0s8'
+virtual_ipaddress: '192.168.33.100 dev enp0s8'
 #
 auth_pass: 'changeme'
 

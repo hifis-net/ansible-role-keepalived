@@ -2,7 +2,8 @@
 
 - name: Restart Keepalived
   become: yes
-  become_user: root
-  service: "name={{ keepalived_name }} state=restarted"
+  service:
+    name: "{{ keepalived_name }}"
+    state: restarted
 
 ...
