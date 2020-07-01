@@ -35,42 +35,45 @@ keepalived_path: "{{ keepalived_base_dir }}{{ keepalived_build_dir }}{{ keepaliv
 keepalived_download_url: "https://www.keepalived.org/software/keepalived-{{ keepalived_version }}.tar.gz"
 # Folder for configuration files
 keepalived_conf_dir: '/etc/keepalived/'
-# Path to Keepalived confiuration file
+# Path to Keepalived configuration file
 keepalived_conf_file_path: "{{ keepalived_conf_dir }}{{ keepalived_name }}.conf"
 # Name of the template file for Systemd service
 keepalived_service_template: 'keepalived.service'
-# Folder into which Redis service file is copied
+# Folder into which Keepalived service file is copied
 keepalived_systemd_dir: '/etc/systemd/system/'
-# Name of Redis Server service file
+# Name of Keepalived service file
 keepalived_service_file: 'keepalived.service'
 # Path to Keepalived service template file
 keepalived_service_template_file_path: "{{ keepalived_base_dir }}{{ keepalived_build_dir }}{{ keepalived_dir }}{{ keepalived_service_file }}"
 # Path to Keepalived service file
 keepalived_service_file_path: "{{ keepalived_systemd_dir }}{{ keepalived_service_file }}"
-
-# Keepalived configuration file variables:
-
-#
-notification_email: 'c.hueser@hzdr.de'
-#
-router_id: 'HELMHOLTZ_GITLAB_HAPROXY_1'
-#
-weight: '2'
-#
+# Configure notification email address
+notification_email: 'name@localhost'
+# Configure notification sender
+notification_email_from: 'keepalived@localhost'
+# Configure SMTP Server
+smtp_server: '127.0.0.1'
+# Keepalived instance router ID
+router_id: 'KEEPALIVED_1'
+# Keepalived instance network interface
 interface: 'enp0s8'
-#
+# Keepalived instance state MASTER or BACKUP
 state: 'MASTER'
-#
+# Keepalived instance priority
 priority: '200'
-#
+# Keepalived instance weight
+weight: '2'
+# Keepalived instance virtual router ID
 virtual_router_id: '123'
-#
+# Keepalived instance unicast source IP address
 unicast_src_ip: '192.168.33.14'
-#
-unicast_peer: '192.168.33.15'
-#
+# Keepalived instance unicast peer IP addresses
+unicast_peers:
+  - '192.168.33.15'
+  - '192.168.33.16'
+# Keepalived instance virtual IP address
 virtual_ipaddress: '192.168.33.100 dev enp0s8'
-#
+# Keepalived instance authentication password
 auth_pass: 'changeme'
 
 ...

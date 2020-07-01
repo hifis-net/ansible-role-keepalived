@@ -7,8 +7,8 @@ global_defs {
     notification_email {
         {{ notification_email }}
     }
-    notification_email_from keepalived@localhost
-    smtp_server 127.0.0.1
+    notification_email_from {{ notification_email_from }}
+    smtp_server {{ smtp_server }}
     smtp_connect_timeout 30
     router_id {{ router_id }}
 }
@@ -19,12 +19,6 @@ vrrp_script chk_haproxy_process {
     weight {{ weight }}
 }
 
-#vrrp_script chk_haproxy_pid {
-#    script "pidof haproxy"
-#    interval 2
-#    weight {{ weight }}
-#}
-
 vrrp_instance VI_1 {
 
     interface {{ interface }}
@@ -34,7 +28,9 @@ vrrp_instance VI_1 {
     virtual_router_id {{ virtual_router_id }}
     unicast_src_ip {{ unicast_src_ip }}
     unicast_peer {
+        {% for unicast_peer in unicast_peers %}
         {{ unicast_peer }}
+        {% endfor %}
     }
 
     virtual_ipaddress {
@@ -48,23 +44,8 @@ vrrp_instance VI_1 {
 
     track_script {
         chk_haproxy_process
-#        chk_haproxy_pid
     }
 
     smtp_alert
-    #notify_master /etc/keepalived/master.sh
 
 }
-
-#virtual_server 10.0.0.1 80 {
-#    delay_loop 6
-#    lb_algo rr
-#    lb_kind NAT
-#    protocol TCP
-#
-#    real_server 192.168.33.14 80 {
-#        TCP_CHECK {
-#                connect_timeout 10
-#        }
-#    }
-#}
