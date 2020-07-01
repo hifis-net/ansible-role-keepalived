@@ -20,8 +20,8 @@
   when: keepalived_installed.stat.exists
   # Version string will always result in state "changed".
   changed_when:
-    - keepalived_installed.rc != 0
-    - keepalived_installed.stdout | regex_search('^Keepalived v=[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{1,2}') != 'Keepalived v='+keepalived_version
+    - keepalived_version_installed.rc != 0
+    - keepalived_version_installed.stdout | regex_search('^Keepalived v=[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{1,2}') != 'Keepalived v='+keepalived_version
 
 - name: Output version strings.
   debug:
