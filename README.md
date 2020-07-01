@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2020 Helmholtz Centre for Environmental Research (UFZ)
+SPDX-FileCopyrightText: 2020 Helmholtz-Zentrum Dresden-Rossendorf (HZDR)
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
 Keepalived_Role
 ==========
 
@@ -30,7 +37,7 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
-Apache License 2.0
+[Apache-2.0](LICENSES/Apache-2.0.txt)
 
 Author Information
 ------------------

@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2020 Helmholtz Centre for Environmental Research (UFZ)
+# SPDX-FileCopyrightText: 2020 Helmholtz-Zentrum Dresden-Rossendorf (HZDR)
+#
+# SPDX-License-Identifier: Apache-2.0
+
 ---
 # This is an example playbook to execute Ansible tests.
 
@@ -7,3 +12,5 @@
   - name: Example assertion
     assert:
       that: true
+
+...
