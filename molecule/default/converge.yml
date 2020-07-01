@@ -9,6 +9,6 @@
   tasks:
     - name: "Include keepalived_role"
       include_role:
-        name: "keepalived_role"
+        name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
 
 ...
