@@ -4,8 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 ---
-# This is an example playbook to execute Ansible tests.
-
+# Dummy play for verification steps.
 - name: Verify
   hosts: all
   tasks:

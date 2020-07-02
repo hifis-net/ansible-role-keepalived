@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 ---
-#
+# Task to restart the Keepalived service.
 - name: Restart Keepalived
   become: yes
   service:

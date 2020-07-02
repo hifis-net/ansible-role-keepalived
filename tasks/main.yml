@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 ---
-
+# Install dependencies necessary for installing Keepalived.
 - name: Install dependencies.
   become: yes
   package:
@@ -12,12 +12,12 @@
     state: present
     update_cache: yes
   with_items: "{{ keepalived_dependencies }}"
-
+# Checking that Keepalived binary is installed.
 - name: Check whether Keepalived is installed.
   stat:
     path: "{{ keepalived_path }}"
   register: keepalived_installed
-
+# Check which Keepalived version is installed.
 - name: Check keepalived version.
   command:
     cmd: "{{ keepalived_path }} --version"
@@ -27,80 +27,82 @@
   changed_when:
     - keepalived_version_installed.rc != 0
     - keepalived_version_installed.stdout | regex_search('^Keepalived v=[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{1,2}') != 'Keepalived v='+keepalived_version
-
-- name: Output version strings.
+# Output installed Keepalived version.
+- name: Output installed version.
   debug:
     msg: "Installed version: {{ keepalived_version_installed }}"
   when: keepalived_installed.stat.exists
-
-- name: Determine version string.
+# Store value of installed version into variable.
+- name: Put value of installed version into fact.
   set_fact:
     installed_keepalived_version: "{{ keepalived_version_installed.stderr | regex_search('^Keepalived v[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{1,2}') }}"
   when: keepalived_installed.stat.exists
-
-- name: Determine reduced version string.
+# Strip off all characters that do not belong to the version string.
+- name: Cut off all unwanted characters from the version string.
   set_fact:
     reduced_installed_keepalived_version: "{{ installed_keepalived_version[12:] }}"
   when: installed_keepalived_version is defined
-
-- name: Output version strings.
+# Output installed Keepalived version and version to be installed.
+- name: Output both version strings.
   debug:
     msg: "Installed version: {{ reduced_installed_keepalived_version }}, version to be installed: {{ keepalived_version }}."
   when: installed_keepalived_version is defined
-
+# Store boolean value whether both versions are equal.
 - name: Check if version strings are equal.
   set_fact:
     is_keepalived_version_equal: "{{ reduced_installed_keepalived_version is version(keepalived_version, operator='==', strict=True) }}"
   when: keepalived_installed.stat.exists
 
+# Install Keepalived only if Keepalived is not already installed or versions are not equal.
 - name: Continue if Keepalived is not installed or versions are not equal.
   when: not keepalived_installed.stat.exists or (keepalived_installed.stat.exists and not (is_keepalived_version_equal|bool))
   block:
+    # Download Keepalived sources.
     - name: Download and extract keepalived-{{ keepalived_version }}.tar.gz into {{ keepalived_base_dir }}.
       become: yes
       unarchive:
         src: "{{ keepalived_download_url }}"
         dest: "{{ keepalived_base_dir }}"
         remote_src: yes
-
+    # Configure build to install Keepalived.
     - name: Configure Keepalived.
       become: yes
       command: "./configure --prefix={{ keepalived_build_dir_path }}"
       args:
         chdir: "{{ keepalived_build_dir_path }}"
-
+    # Build Keepalived from sources.
     - name: Build Keepalived.
       become: yes
       make:
         chdir: "{{ keepalived_build_dir_path }}"
-
+    # Install Keepalived after building it from source.
     - name: Install Keepalived.
       become: yes
       make:
         chdir: "{{ keepalived_build_dir_path }}"
         target: install
-
+# Create directory that contains configuration files.
 - name: Create Keepalived Configuration Directory.
   become: yes
   file:
     path: "{{ keepalived_conf_dir }}"
     state: directory
     mode: 0755
-
+# Create configuration file for Keepalived.
 - name: Create Config File.
   become: yes
   template:
     src: keepalived.conf.j2
     dest: "{{ keepalived_conf_file_path }}"
     mode: 0644
-
+# Copy Keepalived service template file into {{ keepalived_service_file_path }}.
 - name: Copy Keepalived Service File.
   become: yes
   copy:
     src: "{{ keepalived_service_template_file_path }}"
     dest: "{{ keepalived_service_file_path }}"
     remote_src: yes
-
+# Register service to start at boot time.
 - name: Register Keepalived Service.
   become: yes
   service:

@@ -16,8 +16,10 @@ variables:
 .before_script_template: &before_script
   # Ansible refuses to read from a world-writeable folder
   - chmod 0750 $CI_PROJECT_DIR
+  # Install tools.
   - pip install -U pip
   - pip install pipenv
+  # Install project dependencies.
   - pipenv install --dev
 
 validate:
@@ -26,6 +28,7 @@ validate:
   before_script:
     - *before_script
   script:
+    # Run Molecule linter.
     - pipenv run molecule lint
 
 molecule:
@@ -34,17 +37,24 @@ molecule:
   services:
     - docker:dind
   before_script:
+    # Install Molecule dependencies for use with GitLab CI
+    # which are recommended by the Molecule docs:
+    # https://molecule.readthedocs.io/en/latest/ci.html#gitlab-ci
     - apk update && apk add --no-cache
       python3-dev py3-pip gcc git curl build-base
       autoconf automake py3-cryptography linux-headers
       musl-dev libffi-dev openssl-dev openssh
+    # Output version string of tools used.
     - docker info
     - python3 --version
     - *before_script
   script:
+    # Run Molecule tests.
     - pipenv run molecule test
 
 include:
+  # Include file to check REUSE-compliance (https://reuse.software/)
+  # by running `reuse lint` in a job called `compliance:reuse:`.
   - project: hifis/gitlab-ci-templates
     file: /templates/reuse-compliance.yml
 

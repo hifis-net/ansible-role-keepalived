@@ -18,9 +18,115 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 Role Variables
 --------------
 
-```yaml
+#### Compulsory Variables to be Changed for the Configuration File
 
+###### Configure notification email address
+
+Configure recipient of notification emails:
+
+```yaml
+notification_email: 'name@localhost'
 ```
+
+###### Configure notification sender
+
+Configure sender of notification emails:
+
+```yaml
+notification_email_from: 'keepalived@localhost'
+```
+
+###### Configure SMTP Server
+
+Configure IP address or FQDN of SMTP server:
+
+```yaml
+smtp_server: '127.0.0.1'
+```
+
+###### Keepalived instance router ID
+
+Set unique name of the Keepalived router:
+
+```yaml
+router_id: 'KEEPALIVED_1'
+```
+
+###### Keepalived instance network interface
+
+Set network interface to which the floating IP address is associated:
+
+```yaml
+interface: 'enp0s8'
+```
+
+###### Keepalived instance state MASTER or BACKUP
+
+Set the state of the Keepalived instance to MASTER or BACKUP:
+
+```yaml
+state: 'MASTER'
+```
+
+###### Keepalived instance priority
+
+Set the priority of the Keepalived instance:
+
+```yaml
+priority: '200'
+```
+
+###### Keepalived instance weight
+
+Set the weight of the Keepalived instance:
+
+```yaml
+weight: '2'
+```
+
+###### Keepalived instance virtual router ID
+
+Set the virtual router ID of the Keepalived instance:
+
+```yaml
+virtual_router_id: '123'
+```
+
+###### Keepalived instance unicast source IP address
+
+Set the unicast source IP address of the Keepalived instance:
+
+```yaml
+unicast_src_ip: '192.168.33.14'
+```
+
+###### Keepalived instance unicast peer IP addresses
+
+Set the unicast peer IP addresses of the Keepalived instance:
+
+```yaml
+unicast_peer: 
+  - '192.168.33.15'
+  - '192.168.33.16'
+```
+
+###### Keepalived instance virtual IP address
+
+Set the virtual IP address of the Keepalived instance:
+
+```yaml
+virtual_ipaddress: '192.168.33.100 dev enp0s8'
+```
+
+###### Keepalived instance authentication password
+
+Set the authentication password of the Keepalived instance:
+
+```yaml
+auth_pass: 'changeme'
+```
+
+#### All other Default Variables
 
 ###### Keepalived version
 
@@ -171,112 +277,6 @@ Path to Keepalived service file:
 
 ```yaml
 keepalived_service_file_path: '/etc/systemd/system/keepalived.service'
-```
-
-###### Configure notification email address
-
-Configure recipient of notification emails:
-
-```yaml
-notification_email: 'name@localhost'
-```
-
-###### Configure notification sender
-
-Configure sender of notification emails:
-
-```yaml
-notification_email_from: 'keepalived@localhost'
-```
-
-###### Configure SMTP Server
-
-Configure IP address or FQDN of SMTP server:
-
-```yaml
-smtp_server: '127.0.0.1'
-```
-
-###### Keepalived instance router ID
-
-Set unique name of the Keepalived router:
-
-```yaml
-router_id: 'KEEPALIVED_1'
-```
-
-###### Keepalived instance network interface
-
-Set network interface to which the floating IP address is associated:
-
-```yaml
-interface: 'enp0s8'
-```
-
-###### Keepalived instance state MASTER or BACKUP
-
-Set the state of the Keepalived instance to MASTER or BACKUP:
-
-```yaml
-state: 'MASTER'
-```
-
-###### Keepalived instance priority
-
-Set the priority of the Keepalived instance:
-
-```yaml
-priority: '200'
-```
-
-###### Keepalived instance weight
-
-Set the weight of the Keepalived instance:
-
-```yaml
-weight: '2'
-```
-
-###### Keepalived instance virtual router ID
-
-Set the virtual router ID of the Keepalived instance:
-
-```yaml
-virtual_router_id: '123'
-```
-
-###### Keepalived instance unicast source IP address
-
-Set the unicast source IP address of the Keepalived instance:
-
-```yaml
-unicast_src_ip: '192.168.33.14'
-```
-
-###### Keepalived instance unicast peer IP addresses
-
-Set the unicast peer IP addresses of the Keepalived instance:
-
-```yaml
-unicast_peer: 
-  - '192.168.33.15'
-  - '192.168.33.16'
-```
-
-###### Keepalived instance virtual IP address
-
-Set the virtual IP address of the Keepalived instance:
-
-```yaml
-virtual_ipaddress: '192.168.33.100 dev enp0s8'
-```
-
-###### Keepalived instance authentication password
-
-Set the authentication password of the Keepalived instance:
-
-```yaml
-auth_pass: 'changeme'
 ```
 
 Dependencies
