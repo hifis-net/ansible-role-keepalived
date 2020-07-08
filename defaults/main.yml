@@ -6,6 +6,10 @@
 ---
 # Keepalived version
 keepalived_version: '2.1.3'
+# Name of Keepalived user
+keepalived_user: 'keepalived'
+# Name of Keepalived group
+keepalived_group: 'keepalived'
 # List of dependencies of Keepalived
 keepalived_dependencies:
   - 'build-essential'
@@ -21,16 +25,16 @@ keepalived_instance_ip: "{{ ansible_default_ipv4.address }}"
 keepalived_base_dir: '/usr/local/'
 # Name of Keepalived
 keepalived_name: 'keepalived'
-# Folder which contains Keepalived sources
-keepalived_dir: 'keepalived/'
 # Folder which contains Keepalived
 keepalived_build_dir: "{{ keepalived_name }}-{{ keepalived_version }}/"
 # Path to Keepalived build folder
 keepalived_build_dir_path: "{{ keepalived_base_dir }}{{ keepalived_build_dir }}"
+# Folder which contains Keepalived sources
+keepalived_dir: "{{ keepalived_build_dir_path }}keepalived/"
 # Folder which contains the keepalived binaries
-keepalived_sbin_dir: 'sbin/'
+keepalived_sbin_dir: "{{ keepalived_build_dir_path }}sbin/"
 # Path to Keepalived binary
-keepalived_path: "{{ keepalived_base_dir }}{{ keepalived_build_dir }}{{ keepalived_sbin_dir }}{{ keepalived_name }}"
+keepalived_path: "{{ keepalived_sbin_dir }}{{ keepalived_name }}"
 # URL from which Keepalived can be downloaded
 keepalived_download_url: "https://www.keepalived.org/software/keepalived-{{ keepalived_version }}.tar.gz"
 # Folder for configuration files
@@ -44,7 +48,7 @@ keepalived_systemd_dir: '/etc/systemd/system/'
 # Name of Keepalived service file
 keepalived_service_file: 'keepalived.service'
 # Path to Keepalived service template file
-keepalived_service_template_file_path: "{{ keepalived_base_dir }}{{ keepalived_build_dir }}{{ keepalived_dir }}{{ keepalived_service_file }}"
+keepalived_service_template_file_path: "{{ keepalived_dir }}{{ keepalived_service_file }}"
 # Path to Keepalived service file
 keepalived_service_file_path: "{{ keepalived_systemd_dir }}{{ keepalived_service_file }}"
 # Configure notification email address
@@ -72,7 +76,8 @@ unicast_peers:
   - '192.168.33.15'
   - '192.168.33.16'
 # Keepalived instance virtual IP address
-virtual_ipaddress: '192.168.33.100 dev enp0s8'
+virtual_ip_address: '192.168.33.100'
+virtual_ipaddress_config: "{{ virtual_ip_address }} dev {{ interface }}"
 # Keepalived instance authentication password
 auth_pass: 'changeme'
 

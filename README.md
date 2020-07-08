@@ -115,7 +115,15 @@ unicast_peer:
 Set the virtual IP address of the Keepalived instance:
 
 ```yaml
-virtual_ipaddress: '192.168.33.100 dev enp0s8'
+virtual_ip_address: '192.168.33.100'
+```
+
+###### Keepalived instance virtual IP address and network interface
+
+Set the virtual IP address and network interface of the Keepalived instance:
+
+```yaml
+virtual_ipaddress_config: '192.168.33.100 dev enp0s8'
 ```
 
 ###### Keepalived instance authentication password
