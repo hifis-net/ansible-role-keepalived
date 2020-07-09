@@ -13,16 +13,16 @@
         name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
   vars:
     router_id: 'KEEPALIVED_1'
-    interface: "enp0s8"
+    interface: "eth0"
     state: 'MASTER'
     priority: '200'
     weight: '2'
     virtual_router_id: '123'
-    unicast_src_ip: '192.168.33.14'
+    unicast_src_ip: '172.17.0.2'
     unicast_peers:
-      - '192.168.33.15'
-      - '192.168.33.16'
-    virtual_ip_address: "192.168.33.100"
-    virtual_ipaddress_config: "192.168.33.100 dev enp0s8"
+      - '172.17.0.3'
+      - '172.17.0.4'
+    virtual_ip_address: "172.17.0.20"
+    virtual_ipaddress_config: "172.17.0.20 dev eth0"
 
 ...
