@@ -13,16 +13,16 @@
         name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
   vars:
     router_id: 'KEEPALIVED_1'
-    interface: "eth0"
+    interface: "{{ ansible_default_ipv4.interface }}"
     state: 'MASTER'
     priority: '200'
     weight: '2'
     virtual_router_id: '123'
-    unicast_src_ip: '172.17.0.2'
+    unicast_src_ip: "{{ ansible_default_ipv4.address }}"
     unicast_peers:
       - '172.17.0.3'
       - '172.17.0.4'
     virtual_ip_address: "172.17.0.20"
-    virtual_ipaddress_config: "172.17.0.20 dev eth0"
+    virtual_ipaddress_config: "172.17.0.20 dev {{ ansible_default_ipv4.interface }}"
 
 ...
