@@ -18,31 +18,7 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 Role Variables
 --------------
 
-#### Compulsory Variables to be Changed for the Configuration File
-
-###### Configure notification email address
-
-Configure recipient of notification emails:
-
-```yaml
-notification_email: 'name@localhost'
-```
-
-###### Configure notification sender
-
-Configure sender of notification emails:
-
-```yaml
-notification_email_from: 'keepalived@localhost'
-```
-
-###### Configure SMTP Server
-
-Configure IP address or FQDN of SMTP server:
-
-```yaml
-smtp_server: '127.0.0.1'
-```
+#### Compulsory variables which are not set per default
 
 ###### Keepalived instance router ID
 
@@ -126,14 +102,6 @@ Set the virtual IP address and network interface of the Keepalived instance:
 virtual_ipaddress_config: '192.168.33.100 dev enp0s8'
 ```
 
-###### Keepalived instance authentication password
-
-Set the authentication password of the Keepalived instance:
-
-```yaml
-auth_pass: 'changeme'
-```
-
 #### All other Default Variables
 
 ###### Keepalived version
@@ -157,14 +125,6 @@ keepalived_dependencies:
   - 'libnl-3-dev'
   - 'libnl-genl-3-dev'
   - 'libsnmp-dev'
-```
-
-###### IP address of Keepalived
-
-IP-Address of Keepalived insatnce is auto-detected:
-
-```yaml
-keepalived_instance_ip: "{{ ansible_default_ipv4.address }}"
 ```
 
 ###### Directory to put the Keepalived installation into
@@ -285,6 +245,38 @@ Path to Keepalived service file:
 
 ```yaml
 keepalived_service_file_path: '/etc/systemd/system/keepalived.service'
+```
+
+###### Configure notification email address
+
+Configure recipient of notification emails:
+
+```yaml
+notification_email: 'name@localhost'
+```
+
+###### Configure notification sender
+
+Configure sender of notification emails:
+
+```yaml
+notification_email_from: 'keepalived@localhost'
+```
+
+###### Configure SMTP Server
+
+Configure IP address or FQDN of SMTP server:
+
+```yaml
+smtp_server: '127.0.0.1'
+```
+
+###### Keepalived instance authentication password
+
+Set the authentication password of the Keepalived instance:
+
+```yaml
+auth_pass: 'changeme'
 ```
 
 Dependencies

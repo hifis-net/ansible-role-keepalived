@@ -4,6 +4,21 @@
 # SPDX-License-Identifier: Apache-2.0
 
 ---
+- name: Check that all mandatory variables are defined.
+  assert:
+    that:
+      - interface is defined
+      - unicast_peers is defined
+      - virtual_ip_address is defined
+      - virtual_ipaddress_config is defined
+      - router_id is defined
+      - state is defined
+      - priority is defined
+      - weight is defined
+      - virtual_router_id is defined
+    fail_msg: "Some mandatory variables are not set."
+    success_msg: "All mandatory variables are set."
+
 - name: Install dependencies for Keepalived.
   become: yes
   package:

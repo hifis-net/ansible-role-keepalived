@@ -19,8 +19,6 @@ keepalived_dependencies:
   - 'libnl-3-dev'
   - 'libnl-genl-3-dev'
   - 'libsnmp-dev'
-# IP address of Keepalived
-keepalived_instance_ip: "{{ ansible_default_ipv4.address }}"
 # Folder to put the Keepalived installation into
 keepalived_base_dir: '/usr/local/'
 # Name of Keepalived
@@ -57,27 +55,6 @@ notification_email: 'name@localhost'
 notification_email_from: 'keepalived@localhost'
 # Configure SMTP Server
 smtp_server: '127.0.0.1'
-# Keepalived instance router ID
-router_id: 'KEEPALIVED_1'
-# Keepalived instance network interface
-interface: 'enp0s8'
-# Keepalived instance state MASTER or BACKUP
-state: 'MASTER'
-# Keepalived instance priority
-priority: '200'
-# Keepalived instance weight
-weight: '2'
-# Keepalived instance virtual router ID
-virtual_router_id: '123'
-# Keepalived instance unicast source IP address
-unicast_src_ip: '192.168.33.14'
-# Keepalived instance unicast peer IP addresses
-unicast_peers:
-  - '192.168.33.15'
-  - '192.168.33.16'
-# Keepalived instance virtual IP address
-virtual_ip_address: '192.168.33.100'
-virtual_ipaddress_config: "{{ virtual_ip_address }} dev {{ interface }}"
 # Keepalived instance authentication password
 auth_pass: 'changeme'
 
