@@ -20,62 +20,6 @@ Role Variables
 
 #### Compulsory variables which are not set per default
 
-###### Keepalived instance router ID
-
-Set unique name of the Keepalived router:
-
-```yaml
-router_id: 'KEEPALIVED_1'
-```
-
-###### Keepalived instance network interface
-
-Set network interface to which the floating IP address is associated:
-
-```yaml
-interface: 'enp0s8'
-```
-
-###### Keepalived instance state MASTER or BACKUP
-
-Set the state of the Keepalived instance to MASTER or BACKUP:
-
-```yaml
-state: 'MASTER'
-```
-
-###### Keepalived instance priority
-
-Set the priority of the Keepalived instance:
-
-```yaml
-priority: '200'
-```
-
-###### Keepalived instance weight
-
-Set the weight of the Keepalived instance:
-
-```yaml
-weight: '2'
-```
-
-###### Keepalived instance virtual router ID
-
-Set the virtual router ID of the Keepalived instance:
-
-```yaml
-virtual_router_id: '123'
-```
-
-###### Keepalived instance unicast source IP address
-
-Set the unicast source IP address of the Keepalived instance:
-
-```yaml
-unicast_src_ip: '192.168.33.14'
-```
-
 ###### Keepalived instance unicast peer IP addresses
 
 Set the unicast peer IP addresses of the Keepalived instance:
@@ -94,12 +38,30 @@ Set the virtual IP address of the Keepalived instance:
 virtual_ip_address: '192.168.33.100'
 ```
 
-###### Keepalived instance virtual IP address and network interface
+#### Default Variables which need to be set if backup instances are created:
 
-Set the virtual IP address and network interface of the Keepalived instance:
+###### Keepalived instance router ID
+
+Set unique name of the Keepalived router:
 
 ```yaml
-virtual_ipaddress_config: '192.168.33.100 dev enp0s8'
+router_id: 'KEEPALIVED_2'
+```
+
+###### Keepalived instance state MASTER or BACKUP
+
+Set the state of the Keepalived instance to MASTER or BACKUP:
+
+```yaml
+state: 'BACKUP'
+```
+
+###### Keepalived instance priority
+
+Set the priority of the Keepalived instance:
+
+```yaml
+priority: '99'
 ```
 
 #### All other Default Variables
@@ -269,6 +231,30 @@ Configure IP address or FQDN of SMTP server:
 
 ```yaml
 smtp_server: '127.0.0.1'
+```
+
+###### Keepalived instance unicast source IP address
+
+Set the unicast source IP address of the Keepalived instance:
+
+```yaml
+unicast_src_ip: '{{ ansible_default_ipv4.address }}'
+```
+
+###### Keepalived instance network interface
+
+Set network interface to which the floating IP address is associated:
+
+```yaml
+interface: "{{ ansible_default_ipv4.interface }}"
+```
+
+###### Keepalived instance virtual IP address and network interface
+
+Set the virtual IP address and network interface of the Keepalived instance:
+
+```yaml
+virtual_ipaddress_config: "{{ virtual_ip_address }} dev {{ interface }}"
 ```
 
 ###### Keepalived instance authentication password

@@ -57,11 +57,6 @@
     - keepalived_version_installed.rc != 0
     - keepalived_version_installed.stdout | regex_search('^Keepalived v=[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{1,2}') != 'Keepalived v='+keepalived_version
 
-- name: Output installed Keepalived version.
-  debug:
-    msg: "Installed version: {{ keepalived_version_installed }}"
-  when: keepalived_installed.stat.exists
-
 - name: Put value of installed version into an Ansible fact.
   set_fact:
     installed_keepalived_version: "{{ keepalived_version_installed.stderr | regex_search('^Keepalived v[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{1,2}') }}"
