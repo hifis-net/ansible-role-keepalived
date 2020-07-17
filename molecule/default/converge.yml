@@ -14,7 +14,6 @@
   vars:
     interface: "{{ ansible_default_ipv4.interface }}"
     state: 'MASTER'
-    priority: '200'
     weight: '2'
     virtual_router_id: '123'
     unicast_src_ip: "{{ ansible_default_ipv4.address }}"

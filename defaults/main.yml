@@ -62,7 +62,7 @@ virtual_router_id: '51'
 # Weight of the Keepalived instance
 weight: '1'
 # Keepalived instance priority
-priority: '100'
+priority: "{{ '100' if state == 'MASTER' else '99' }}"
 # Keepalived instance state MASTER or BACKUP
 state: 'MASTER'
 # Keepalived instance network interface

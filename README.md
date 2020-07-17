@@ -38,24 +38,6 @@ Set the virtual IP address of the Keepalived instance:
 virtual_ip_address: '192.168.33.100'
 ```
 
-#### Default Variables which need to be set if backup instances are created:
-
-###### Keepalived instance state MASTER or BACKUP
-
-Set the state of the Keepalived instance to MASTER or BACKUP:
-
-```yaml
-state: 'BACKUP'
-```
-
-###### Keepalived instance priority
-
-Set the priority of the Keepalived instance:
-
-```yaml
-priority: '99'
-```
-
 #### All other Default Variables
 
 ###### Keepalived version
@@ -223,6 +205,22 @@ Configure IP address or FQDN of SMTP server:
 
 ```yaml
 smtp_server: '127.0.0.1'
+```
+
+###### Keepalived instance state MASTER or BACKUP
+
+Set the state of the Keepalived instance to MASTER or BACKUP:
+
+```yaml
+state: 'BACKUP'
+```
+
+###### Keepalived instance priority
+
+Set the priority of the Keepalived instance:
+
+```yaml
+priority: '99'
 ```
 
 ###### Keepalived instance router ID
