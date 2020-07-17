@@ -65,8 +65,6 @@ weight: '1'
 priority: '100'
 # Keepalived instance state MASTER or BACKUP
 state: 'MASTER'
-# Keepalived instance router ID
-router_id: 'KEEPALIVED_1'
 # Keepalived instance network interface
 interface: "{{ ansible_default_ipv4.interface }}"
 # Keepalived instance virtual IP address and network interface

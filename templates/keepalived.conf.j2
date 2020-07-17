@@ -10,7 +10,9 @@ global_defs {
     notification_email_from {{ notification_email_from }}
     smtp_server {{ smtp_server }}
     smtp_connect_timeout 30
+{% if router_id is defined %}
     router_id {{ router_id }}
+{% endif %}
 }
 
 vrrp_script chk_haproxy_process {
@@ -28,9 +30,9 @@ vrrp_instance VI_1 {
     virtual_router_id {{ virtual_router_id }}
     unicast_src_ip {{ unicast_src_ip }}
     unicast_peer {
-        {% for unicast_peer in unicast_peers %}
+{% for unicast_peer in unicast_peers %}
         {{ unicast_peer }}
-        {% endfor %}
+{% endfor %}
     }
 
     virtual_ipaddress {

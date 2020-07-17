@@ -12,7 +12,6 @@
       include_role:
         name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
   vars:
-    router_id: 'KEEPALIVED_1'
     interface: "{{ ansible_default_ipv4.interface }}"
     state: 'MASTER'
     priority: '200'

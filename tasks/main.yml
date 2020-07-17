@@ -11,7 +11,6 @@
       - unicast_peers is defined
       - virtual_ip_address is defined
       - virtual_ipaddress_config is defined
-      - router_id is defined
       - state is defined
       - priority is defined
       - weight is defined
