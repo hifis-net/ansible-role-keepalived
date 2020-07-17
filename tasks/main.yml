@@ -124,6 +124,7 @@
     owner: "{{ keepalived_user }}"
     group: "{{ keepalived_group }}"
     mode: '0644'
+  notify: Reload Keepalived
 
 - name: Copy Keepalived Service File.
   become: yes

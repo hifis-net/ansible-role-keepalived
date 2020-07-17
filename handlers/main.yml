@@ -4,11 +4,16 @@
 # SPDX-License-Identifier: Apache-2.0
 
 ---
-# Task to restart the Keepalived service.
 - name: Restart Keepalived
   become: yes
   service:
     name: "{{ keepalived_name }}"
     state: restarted
+
+- name: Reload Keepalived
+  become: yes
+  service:
+    name: "{{ keepalived_name }}"
+    state: reloaded
 
 ...
