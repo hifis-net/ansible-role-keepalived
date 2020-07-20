@@ -18,7 +18,9 @@ global_defs {
 vrrp_script chk_haproxy_process {
     script "/usr/bin/killall -0 haproxy"
     interval 2
+{% if weight is defined %}
     weight {{ weight }}
+{% endif %}
 }
 
 vrrp_instance VI_1 {

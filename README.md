@@ -231,6 +231,14 @@ Set unique name of the Keepalived router:
 router_id: 'KEEPALIVED_2'
 ```
 
+###### Keepalived instance weight
+
+Adjust the priority by this weight:
+
+```yaml
+weight: '0'
+```
+
 ###### Keepalived instance unicast source IP address
 
 Set the unicast source IP address of the Keepalived instance:
