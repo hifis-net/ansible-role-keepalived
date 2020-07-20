@@ -39,6 +39,14 @@
     path: "{{ keepalived_path }}"
   register: keepalived_installed
 
+- name: Create Keepalived build directory.
+  file:
+    path: "{{ keepalived_build_dir }}"
+    state: directory
+    owner: "{{ keepalived_user }}"
+    group: "{{ keepalived_group }}"
+    mode: '0755'
+
 - name: Get Keepalived version.
   command:
     cmd: "{{ keepalived_path }} --version"
@@ -48,54 +56,52 @@
 
 - name: Put value of installed version into an Ansible fact.
   set_fact:
-    installed_keepalived_version: "{{ keepalived_version_installed.stderr | regex_search('^Keepalived v[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{1,2}') }}"
+    installed_keepalived_version: "{{ keepalived_version_installed.stderr | regex_search('^Keepalived v(\\d+\\.\\d+\\.\\d+)', '\\1') | first }}"
   when: keepalived_installed.stat.exists
-
-- name: Cut off all unwanted characters from the version string.
-  set_fact:
-    reduced_installed_keepalived_version: "{{ installed_keepalived_version[12:] }}"
-  when: installed_keepalived_version is defined
 
 - name: Output version strings of installed and to be installed Keepalived.
   debug:
-    msg: "Installed version: {{ reduced_installed_keepalived_version }}, version to be installed: {{ keepalived_version }}."
+    msg: "Installed version: {{ installed_keepalived_version }}, version to be installed: {{ keepalived_version }}."
   when: installed_keepalived_version is defined
 
 - name: Check if both version strings are equal.
   set_fact:
-    is_keepalived_version_equal: "{{ reduced_installed_keepalived_version is version(keepalived_version, operator='==', strict=True) }}"
+    is_keepalived_version_equal: "{{ installed_keepalived_version is version(keepalived_version, operator='==', strict=True) }}"
   when: keepalived_installed.stat.exists
 
 - name: Continue with installing Keepalived if Keepalived is not already installed or versions are not equal.
-  when: not keepalived_installed.stat.exists or (keepalived_installed.stat.exists and not (is_keepalived_version_equal|bool))
+  when: not keepalived_installed.stat.exists or not is_keepalived_version_equal
   block:
 
-    - name: Download and extract keepalived-{{ keepalived_version }}.tar.gz into {{ keepalived_base_dir }}.
+    - name: Download and extract keepalived archive.
       become: yes
       unarchive:
         src: "{{ keepalived_download_url }}"
-        dest: "{{ keepalived_base_dir }}"
+        dest: "{{ keepalived_build_dir }}"
         remote_src: yes
+        extra_opts:
+          - "--strip-components=1"
         owner: "{{ keepalived_user }}"
         group: "{{ keepalived_group }}"
         mode: '0755'
 
     - name: Configure Keepalived to be build.
       become: yes
-      command: "./configure --prefix={{ keepalived_build_dir_path }}"
+      command: "./configure --prefix={{ keepalived_build_dir }}"
       args:
-        chdir: "{{ keepalived_build_dir_path }}"
+        chdir: "{{ keepalived_build_dir }}"
 
     - name: Build Keepalived from source.
       become: yes
       make:
-        chdir: "{{ keepalived_build_dir_path }}"
+        chdir: "{{ keepalived_build_dir }}"
 
     - name: Install Keepalived binaries.
       become: yes
       make:
-        chdir: "{{ keepalived_build_dir_path }}"
+        chdir: "{{ keepalived_build_dir }}"
         target: install
+      notify: Restart Keepalived
 
 - name: Create Keepalived Configuration Directory.
   become: yes
