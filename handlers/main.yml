@@ -9,6 +9,7 @@
   service:
     name: "{{ keepalived_name }}"
     state: restarted
+  when: keepalived_installed.stat.exists
 
 - name: Reload Keepalived
   become: yes
