@@ -12,14 +12,10 @@
       include_role:
         name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
   vars:
-    interface: "{{ ansible_default_ipv4.interface }}"
-    state: 'MASTER'
-    virtual_router_id: '123'
-    unicast_src_ip: "{{ ansible_default_ipv4.address }}"
     unicast_peers:
       - '172.17.0.3'
       - '172.17.0.4'
     virtual_ip_address: "172.17.0.20"
-    virtual_ipaddress_config: "172.17.0.20 dev {{ ansible_default_ipv4.interface }}"
+
 
 ...
