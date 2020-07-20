@@ -129,12 +129,11 @@
     group: "{{ keepalived_group }}"
     mode: '0644'
 
-- name: Register Keepalived Systemd Service.
+- name: Start Keepalived Systemd Service.
   become: yes
   service:
     name: "{{ keepalived_name }}"
     state: started
     enabled: yes
-  when: not keepalived_installed.stat.exists
 
 ...
