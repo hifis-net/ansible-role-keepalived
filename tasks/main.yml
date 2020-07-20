@@ -19,10 +19,9 @@
 - name: Install dependencies for Keepalived.
   become: yes
   package:
-    name: "{{ item }}"
+    name: "{{ keepalived_dependencies }}"
     state: present
     update_cache: yes
-  with_items: "{{ keepalived_dependencies }}"
 
 - name: Create Keepalived Group.
   become: yes
