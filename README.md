@@ -45,7 +45,7 @@ virtual_ip_address: '192.168.33.100'
 Variable to pin the Keepalived version to a certain value:
 
 ```yaml
-keepalived_version: '2.1.3'
+keepalived_version: '2.1.5'
 ```
 
 ###### List of dependencies of Keepalived
@@ -68,7 +68,7 @@ keepalived_dependencies:
 Select a directory to install Keepalived into:
 
 ```yaml
-keepalived_base_dir: '/usr/local/'
+keepalived_base_dir: '/usr/local'
 ```
 
 ###### Keepalived binary name
@@ -79,36 +79,20 @@ Name of the Keepalived binary:
 keepalived_name: 'keepalived'
 ```
 
+###### Keepalived build directory
+
+Path to Keepalived build directory:
+
+```yaml
+keepalived_build_dir: "/usr/local/keepalived"
+```
+
 ###### Keepalived sources directory
 
 Directory which contains Keepalived sources:
 
 ```yaml
-keepalived_dir: 'keepalived/'
-```
-
-###### Keepalived build directory
-
-Directory to build Keepalived in:
-
-```yaml
-keepalived_build_dir: 'keepalived-2.1.3/'
-```
-
-###### Keepalived build directory path
-
-Path to Keepalived build directory:
-
-```yaml
-keepalived_build_dir_path: '/usr/local/keepalived-2.1.3/'
-```
-
-###### Keepalived binaries directory
-
-Directory which contains the Keepalived binaries:
- 
-```yaml
-keepalived_sbin_dir: 'sbin/'
+keepalived_dir: "/usr/local/keepalived/keepalived"
 ```
 
 ###### Keepalived binary path
@@ -116,7 +100,7 @@ keepalived_sbin_dir: 'sbin/'
 Path to the Keepalived binary:
 
 ```yaml
-keepalived_path: '/usr/local/keepalived-2.1.3/sbin/keepalived'
+keepalived_path: '/usr/local/keepalived/sbin/keepalived'
 ```
 
 ###### Keepalived Download URL
@@ -124,7 +108,7 @@ keepalived_path: '/usr/local/keepalived-2.1.3/sbin/keepalived'
 URL from which Keepalived can be downloaded:
 
 ```yaml
-keepalived_download_url: 'https://www.keepalived.org/software/keepalived-2.1.3.tar.gz'
+keepalived_download_url: 'https://www.keepalived.org/software/keepalived-2.1.5.tar.gz'
 ```
 
 ###### Keepalived configuration directory
@@ -132,7 +116,7 @@ keepalived_download_url: 'https://www.keepalived.org/software/keepalived-2.1.3.t
 Directory which contains Keepalived configuration files:
 
 ```yaml
-keepalived_conf_dir: '/etc/keepalived/'
+keepalived_conf_dir: '/etc/keepalived'
 ```
 
 ###### Keepalived configuration file path
@@ -140,7 +124,7 @@ keepalived_conf_dir: '/etc/keepalived/'
 Path to Keepalived configuration file:
 
 ```yaml
-keepalived_conf_file_path: 'etc/keepalived/keepalived.conf'
+keepalived_conf_file_path: '/etc/keepalived/keepalived.conf'
 ```
 
 ###### Systemd service template file name
@@ -156,7 +140,7 @@ keepalived_service_template: 'keepalived.service'
 Directory into which the Keepalived service file is copied:
 
 ```yaml
-keepalived_systemd_dir: '/etc/systemd/system/'
+keepalived_systemd_dir: '/etc/systemd/system'
 ```
 
 ###### Keepalived service file name
@@ -172,7 +156,7 @@ keepalived_service_file: 'keepalived.service'
 Path to Keepalived service template file: 
 
 ```yaml
-keepalived_service_template_file_path: '/usr/local/keepalived-2.1.3/keepalived/keepalived.service'
+keepalived_service_template_file_path: '/usr/local/keepalived/keepalived/keepalived.service'
 ```
 
 ###### Keepalived service file path
