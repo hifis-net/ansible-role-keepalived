@@ -13,6 +13,7 @@
         name:
           - sudo      # for `become` privilege escalation
           - iproute2  # for gathering network facts
+          - psmisc    # provides `killall` command
         state: present
 
 ...
