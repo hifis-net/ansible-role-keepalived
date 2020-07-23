@@ -1,2 +1,20 @@
+# SPDX-FileCopyrightText: 2020 Helmholtz Centre for Environmental Research (UFZ)
+# SPDX-FileCopyrightText: 2020 Helmholtz-Zentrum Dresden-Rossendorf (HZDR)
+#
+# SPDX-License-Identifier: Apache-2.0
+
 ---
-# handlers file for keepalived_role
+- name: Restart Keepalived
+  become: yes
+  service:
+    name: "{{ keepalived_name }}"
+    state: restarted
+  when: keepalived_installed.stat.exists
+
+- name: Reload Keepalived
+  become: yes
+  service:
+    name: "{{ keepalived_name }}"
+    state: reloaded
+
+...

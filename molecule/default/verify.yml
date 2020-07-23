@@ -1,9 +1,21 @@
----
-# This is an example playbook to execute Ansible tests.
+# SPDX-FileCopyrightText: 2020 Helmholtz Centre for Environmental Research (UFZ)
+# SPDX-FileCopyrightText: 2020 Helmholtz-Zentrum Dresden-Rossendorf (HZDR)
+#
+# SPDX-License-Identifier: Apache-2.0
 
-- name: Verify
+---
+- name: Verify Keepalived
   hosts: all
   tasks:
-  - name: Example assertion
-    assert:
-      that: true
+    - name: Populate service facts.
+      service_facts:
+      register: services_state
+
+    - name: Check that Keepalived is running on instance.
+      assert:
+        that:
+          - services_state.ansible_facts.services['keepalived.service'].state is search("running")
+        fail_msg: "Keepalived need to be running on instance."
+        success_msg: "Keepalived is running on instance."
+
+...

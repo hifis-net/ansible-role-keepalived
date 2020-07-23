@@ -1,2 +1,142 @@
+# SPDX-FileCopyrightText: 2020 Helmholtz Centre for Environmental Research (UFZ)
+# SPDX-FileCopyrightText: 2020 Helmholtz-Zentrum Dresden-Rossendorf (HZDR)
+#
+# SPDX-License-Identifier: Apache-2.0
+
 ---
-# tasks file for keepalived_role
+- name: Check that all mandatory variables are defined.
+  assert:
+    that:
+      - unicast_peers is defined
+      - virtual_ip_address is defined
+    fail_msg: "Some mandatory variables are not set."
+    success_msg: "All mandatory variables are set."
+
+- name: Install dependencies for Keepalived.
+  become: yes
+  package:
+    name: "{{ keepalived_dependencies }}"
+    state: present
+    update_cache: yes
+
+- name: Create Keepalived Group.
+  become: yes
+  group:
+    name: "{{ keepalived_group }}"
+    system: yes
+    state: present
+
+- name: Add Keepalived System User.
+  become: yes
+  user:
+    name: "{{ keepalived_user }}"
+    group: "{{ keepalived_group }}"
+    system: yes
+    create_home: no
+
+- name: Check whether Keepalived binary is installed.
+  stat:
+    path: "{{ keepalived_path }}"
+  register: keepalived_installed
+
+- name: Create Keepalived build directory.
+  file:
+    path: "{{ keepalived_build_dir }}"
+    state: directory
+    owner: "{{ keepalived_user }}"
+    group: "{{ keepalived_group }}"
+    mode: '0755'
+
+- name: Get Keepalived version.
+  command:
+    cmd: "{{ keepalived_path }} --version"
+  register: keepalived_version_installed
+  when: keepalived_installed.stat.exists
+  changed_when: false
+
+- name: Put value of installed version into an Ansible fact.
+  set_fact:
+    installed_keepalived_version: "{{ keepalived_version_installed.stderr | regex_search('^Keepalived v(\\d+\\.\\d+\\.\\d+)', '\\1') | first }}"
+  when: keepalived_installed.stat.exists
+
+- name: Output version strings of installed and to be installed Keepalived.
+  debug:
+    msg: "Installed version: {{ installed_keepalived_version }}, version to be installed: {{ keepalived_version }}."
+  when: installed_keepalived_version is defined
+
+- name: Check if both version strings are equal.
+  set_fact:
+    is_keepalived_version_equal: "{{ installed_keepalived_version is version(keepalived_version, operator='==', strict=True) }}"
+  when: keepalived_installed.stat.exists
+
+- name: Continue with installing Keepalived if Keepalived is not already installed or versions are not equal.
+  when: not keepalived_installed.stat.exists or not is_keepalived_version_equal
+  block:
+
+    - name: Download and extract keepalived archive.
+      become: yes
+      unarchive:
+        src: "{{ keepalived_download_url }}"
+        dest: "{{ keepalived_build_dir }}"
+        remote_src: yes
+        extra_opts:
+          - "--strip-components=1"
+        owner: "{{ keepalived_user }}"
+        group: "{{ keepalived_group }}"
+        mode: '0755'
+
+    - name: Configure Keepalived to be build.
+      become: yes
+      command: "./configure --prefix={{ keepalived_build_dir }}"
+      args:
+        chdir: "{{ keepalived_build_dir }}"
+
+    - name: Build Keepalived from source.
+      become: yes
+      make:
+        chdir: "{{ keepalived_build_dir }}"
+
+    - name: Install Keepalived binaries.
+      become: yes
+      make:
+        chdir: "{{ keepalived_build_dir }}"
+        target: install
+      notify: Restart Keepalived
+
+- name: Create Keepalived Configuration Directory.
+  become: yes
+  file:
+    path: "{{ keepalived_conf_dir }}"
+    state: directory
+    owner: "{{ keepalived_user }}"
+    group: "{{ keepalived_group }}"
+    mode: '0755'
+
+- name: Create Configuration File.
+  become: yes
+  template:
+    src: keepalived.conf.j2
+    dest: "{{ keepalived_conf_file_path }}"
+    owner: "{{ keepalived_user }}"
+    group: "{{ keepalived_group }}"
+    mode: '0644'
+  notify: Reload Keepalived
+
+- name: Copy Keepalived Service File.
+  become: yes
+  copy:
+    src: "{{ keepalived_service_template_file_path }}"
+    dest: "{{ keepalived_service_file_path }}"
+    remote_src: yes
+    owner: "{{ keepalived_user }}"
+    group: "{{ keepalived_group }}"
+    mode: '0644'
+
+- name: Start Keepalived Systemd Service.
+  become: yes
+  service:
+    name: "{{ keepalived_name }}"
+    state: started
+    enabled: yes
+
+...

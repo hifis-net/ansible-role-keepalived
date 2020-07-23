@@ -1,0 +1,55 @@
+# SPDX-FileCopyrightText: 2020 Helmholtz Centre for Environmental Research (UFZ)
+# SPDX-FileCopyrightText: 2020 Helmholtz-Zentrum Dresden-Rossendorf (HZDR)
+#
+# SPDX-License-Identifier: Apache-2.0
+
+global_defs {
+    notification_email {
+        {{ notification_email }}
+    }
+    notification_email_from {{ notification_email_from }}
+    smtp_server {{ smtp_server }}
+    smtp_connect_timeout 30
+{% if router_id is defined %}
+    router_id {{ router_id }}
+{% endif %}
+}
+
+vrrp_script chk_haproxy_process {
+    script "/usr/bin/killall -0 haproxy"
+    interval 2
+{% if weight is defined %}
+    weight {{ weight }}
+{% endif %}
+}
+
+vrrp_instance VI_1 {
+
+    interface {{ interface }}
+    state {{ state }}
+    priority {{ priority }}
+
+    virtual_router_id {{ virtual_router_id }}
+    unicast_src_ip {{ unicast_src_ip }}
+    unicast_peer {
+{% for unicast_peer in unicast_peers %}
+        {{ unicast_peer }}
+{% endfor %}
+    }
+
+    virtual_ipaddress {
+        {{ virtual_ipaddress_config }}
+    }
+
+    authentication {
+        auth_type PASS
+        auth_pass {{ auth_pass }}
+    }
+
+    track_script {
+        chk_haproxy_process
+    }
+
+    smtp_alert
+
+}

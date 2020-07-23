@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: 2020 Helmholtz Centre for Environmental Research (UFZ)
+# SPDX-FileCopyrightText: 2020 Helmholtz-Zentrum Dresden-Rossendorf (HZDR)
+#
+# SPDX-License-Identifier: Apache-2.0
+
+---
 galaxy_info:
   role_name: keepalived_role
 
@@ -7,7 +13,7 @@ galaxy_info:
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
-  issue_tracker_url: https://gitlab.com/hifis/ansible/keepalived-role
+  issue_tracker_url: https://gitlab.com/hifis/ansible/keepalived-role/-/issues
 
   # Choose a valid license ID from https://spdx.org - some suggested licenses:
   # - BSD-3-Clause (default)
@@ -43,7 +49,6 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - bionic
         - focal
 
   galaxy_tags: []
@@ -57,4 +62,5 @@ galaxy_info:
 dependencies: []
   # List your role dependencies here, one per line. Be sure to remove the '[]' above,
   # if you add dependencies to this list.
-  
+
+...
