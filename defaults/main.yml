@@ -25,6 +25,13 @@ keepalived_user: 'keepalived'
 # Name of Keepalived group
 keepalived_group: 'keepalived'
 
+# HAProxy user for executing keepalived script
+haproxy_user: 'haproxy'
+# HAProxy group for executing keepalived script
+haproxy_group: 'haproxy'
+# HAProxy process name to be check by Keepalived
+haproxy_process_name: 'haproxy'
+
 # Folder to put the Keepalived installation into
 keepalived_base_dir: '/usr/local'
 # Path to Keepalived build folder

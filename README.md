@@ -63,6 +63,46 @@ keepalived_dependencies:
   - 'libsnmp-dev'
 ```
 
+###### Name of Keepalived user
+
+Specify Keepalived user to be created for Keepalived:
+
+```yaml
+keepalived_user: 'keepalived'
+```
+
+###### Name of Keepalived group
+
+Specify Keepalived group to be created for Keepalived:
+
+```yaml
+keepalived_group: 'keepalived'
+```
+
+###### HAProxy user for executing Keepalived script
+
+Specify HAProxy user to be created for executing Keepalived script:
+
+```yaml
+haproxy_user: 'haproxy'
+```
+
+###### HAProxy group for executing Keepalived script
+
+Specify HAProxy group to be created for executing Keepalived script:
+
+```yaml
+haproxy_group: 'haproxy'
+```
+
+###### HAProxy process name to be checked by Keepalived script
+
+Specify HAProxy process name to be checked Keepalived script:
+
+```yaml
+haproxy_process_name: 'haproxy'
+```
+
 ###### Directory to put the Keepalived installation into
 
 Select a directory to install Keepalived into:
