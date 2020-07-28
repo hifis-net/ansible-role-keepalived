@@ -33,6 +33,8 @@
     group: "{{ keepalived_group }}"
     system: yes
     create_home: no
+    shell: '/usr/sbin/nologin'
+    state: present
 
 - name: Check whether Keepalived binary is installed.
   stat:
