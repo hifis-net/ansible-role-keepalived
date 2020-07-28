@@ -79,9 +79,18 @@ Specify Keepalived group to be created for Keepalived:
 keepalived_group: 'keepalived'
 ```
 
+###### Enable script security
+
+Flag to enable script security to prevent script to run by root user 
+if any part of the path is writable by a non-root user:
+
+```yaml
+set_script_security_flag: true
+```
+
 ###### HAProxy user for executing Keepalived script
 
-Specify HAProxy user to be created for executing Keepalived script:
+Specify HAProxy username to run Keepalived script under:
 
 ```yaml
 haproxy_user: 'haproxy'
@@ -89,7 +98,7 @@ haproxy_user: 'haproxy'
 
 ###### HAProxy group for executing Keepalived script
 
-Specify HAProxy group to be created for executing Keepalived script:
+Specify HAProxy groupname to run Keepalived script under:
 
 ```yaml
 haproxy_group: 'haproxy'

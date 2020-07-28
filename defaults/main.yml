@@ -25,6 +25,8 @@ keepalived_user: 'keepalived'
 # Name of Keepalived group
 keepalived_group: 'keepalived'
 
+# Enable script security
+set_script_security_flag: true
 # HAProxy user for executing keepalived script
 haproxy_user: 'haproxy'
 # HAProxy group for executing keepalived script

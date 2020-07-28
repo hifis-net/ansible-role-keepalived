@@ -5,7 +5,9 @@
 
 global_defs {
     script_user {{ haproxy_user }} {{ haproxy_group }}
+{% if set_script_security_flag %}
     enable_script_security
+{% endif %}
     notification_email {
         {{ notification_email }}
     }
