@@ -12,8 +12,8 @@ Wants=network-online.target
 Type=forking
 PIDFile={{ keepalived_pid_file_dir }}/keepalived.pid
 KillMode=process
-EnvironmentFile=-{{ keepalived_base_dir }}/keepalived/etc/sysconfig/keepalived
-ExecStart= {{ keepalived_base_dir }}/keepalived/sbin/keepalived -p {{ keepalived_pid_file_dir }}/keepalived.pid $KEEPALIVED_OPTIONS
+EnvironmentFile=-{{ keepalived_build_dir }}/etc/sysconfig/keepalived
+ExecStart={{ keepalived_path }} -p {{ keepalived_pid_file_dir }}/keepalived.pid $KEEPALIVED_OPTIONS
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
