@@ -127,7 +127,7 @@
 - name: Create Directory for Keepalived PID file.
   become: yes
   file:
-    path: "{{ keepallived_pid_file_dir }}"
+    path: "{{ keepalived_pid_file_dir }}"
     state: directory
     owner: "{{ keepalived_user }}"
     group: "{{ keepalived_group }}"
