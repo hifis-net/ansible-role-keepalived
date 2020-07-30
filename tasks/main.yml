@@ -124,15 +124,25 @@
     mode: '0644'
   notify: Reload Keepalived
 
-- name: Copy Keepalived Service File.
+- name: Create Directory for Keepalived PID file.
   become: yes
-  copy:
-    src: "{{ keepalived_service_template_file_path }}"
+  file:
+    path: "{{ keepalived_pid_file_dir }}"
+    state: directory
+    owner: "{{ keepalived_user }}"
+    group: "{{ keepalived_group }}"
+    mode: '0755'
+
+- name: Create Keepalived Service Unit File.
+  template:
+    src: keepalived.service.j2
     dest: "{{ keepalived_service_file_path }}"
-    remote_src: yes
     owner: "{{ keepalived_user }}"
     group: "{{ keepalived_group }}"
     mode: '0644'
+  notify:
+    - Reread Systemd Configs
+    - Restart Keepalived
 
 - name: Start Keepalived Systemd Service.
   become: yes

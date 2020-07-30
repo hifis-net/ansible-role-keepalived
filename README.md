@@ -216,6 +216,14 @@ Path to Keepalived service file:
 keepalived_service_file_path: '/etc/systemd/system/keepalived.service'
 ```
 
+###### Directory for Keepalived PID file
+
+Specify in which directory the Keepalived PID file should be created:
+
+```yaml
+keepalived_pid_file_dir: "/var/run/keepalived"
+```
+
 ###### Configure notification email address
 
 Configure recipient of notification emails:
