@@ -25,15 +25,6 @@ keepalived_user: 'keepalived'
 # Name of Keepalived group
 keepalived_group: 'keepalived'
 
-# Enable script security
-set_script_security_flag: true
-# HAProxy user for executing keepalived script
-haproxy_user: 'haproxy'
-# HAProxy group for executing keepalived script
-haproxy_group: 'haproxy'
-# HAProxy process name to be check by Keepalived
-haproxy_process_name: 'haproxy'
-
 # Folder to put the Keepalived installation into
 keepalived_base_dir: '/usr/local'
 # Path to Keepalived build folder
@@ -79,5 +70,18 @@ interface: "{{ ansible_default_ipv4.interface }}"
 virtual_ipaddress_config: "{{ virtual_ip_address }} dev {{ interface }}"
 # Keepalived instance unicast source IP address
 unicast_src_ip: '{{ ansible_default_ipv4.address }}'
+
+# Flag to activate a script to be executed
+activate_script: true
+# User for executing Keepalived script
+script_user: 'haproxy'
+# Group for executing Keepalived script
+script_group: 'haproxy'
+# Name of the script to be executed
+script_name: 'chk_haproxy_process'
+# Command of the script to be executed
+script_command: '/usr/bin/killall -0 haproxy'
+# Enable script security
+set_script_security_flag: true
 
 ...
