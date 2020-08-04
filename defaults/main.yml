@@ -48,7 +48,7 @@ keepalived_service_template_file_path: "{{ keepalived_dir }}/{{ keepalived_servi
 # Path to Keepalived service file
 keepalived_service_file_path: "{{ keepalived_systemd_dir }}/{{ keepalived_service_file }}"
 # Directory for Keepalived PID file
-keepalived_pid_file_dir: "/var/run/{{ keepalived_name }}"
+keepalived_pid_file_dir: "/run/{{ keepalived_name }}"
 
 # Configure notification email address
 notification_email: 'name@localhost'
