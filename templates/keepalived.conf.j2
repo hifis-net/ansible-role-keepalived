@@ -4,7 +4,9 @@
 # SPDX-License-Identifier: Apache-2.0
 
 global_defs {
-    script_user {{ haproxy_user }} {{ haproxy_group }}
+{% if activate_script %}
+    script_user {{ script_user }} {{ script_group }}
+{% endif %}
 {% if set_script_security_flag %}
     enable_script_security
 {% endif %}
@@ -19,13 +21,15 @@ global_defs {
 {% endif %}
 }
 
-vrrp_script chk_haproxy_process {
-    script "/usr/bin/killall -0 {{ haproxy_process_name }}"
+{% if activate_script %}
+vrrp_script {{ script_name }} {
+    script "{{ script_command }}"
     interval 2
 {% if weight is defined %}
     weight {{ weight }}
 {% endif %}
 }
+{% endif %}
 
 vrrp_instance VI_1 {
 
@@ -50,9 +54,11 @@ vrrp_instance VI_1 {
         auth_pass {{ auth_pass }}
     }
 
+{% if activate_script %}
     track_script {
-        chk_haproxy_process
+        {{ script_name }}
     }
+{% endif %}
 
     smtp_alert
 

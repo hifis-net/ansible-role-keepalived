@@ -79,39 +79,6 @@ Specify Keepalived group to be created for Keepalived:
 keepalived_group: 'keepalived'
 ```
 
-###### Enable script security
-
-Flag to enable script security to prevent script to run by root user 
-if any part of the path is writable by a non-root user:
-
-```yaml
-set_script_security_flag: true
-```
-
-###### HAProxy user for executing Keepalived script
-
-Specify HAProxy username to run Keepalived script under:
-
-```yaml
-haproxy_user: 'haproxy'
-```
-
-###### HAProxy group for executing Keepalived script
-
-Specify HAProxy groupname to run Keepalived script under:
-
-```yaml
-haproxy_group: 'haproxy'
-```
-
-###### HAProxy process name to be checked by Keepalived script
-
-Specify HAProxy process name to be checked Keepalived script:
-
-```yaml
-haproxy_process_name: 'haproxy'
-```
-
 ###### Directory to put the Keepalived installation into
 
 Select a directory to install Keepalived into:
@@ -310,6 +277,55 @@ Set the authentication password of the Keepalived instance:
 
 ```yaml
 auth_pass: 'changeme'
+```
+
+###### Enable script security
+
+Flag to enable script security to prevent script to run by root user 
+if any part of the path is writable by a non-root user:
+
+```yaml
+set_script_security_flag: true
+```
+
+###### User for executing Keepalived script
+
+Specify username to run Keepalived script under:
+
+```yaml
+script_user: 'haproxy'
+```
+
+###### Group for executing Keepalived script
+
+Specify groupname to run Keepalived script under:
+
+```yaml
+script_group: 'haproxy'
+```
+
+###### Flag to activate a script to be executed
+
+Activate script that is executed by Keepalived:
+
+```yaml
+activate_script: true
+```
+
+###### Name of the script to be executed
+
+Specify the script name to be executed by Keepalived:
+
+```yaml
+script_name: 'chk_haproxy_process'
+```
+
+###### Command of the script to be executed
+
+Specify the command to be executed by Keepalived:
+
+```yaml
+script_command: '/usr/bin/killall -0 haproxy'
 ```
 
 Dependencies
