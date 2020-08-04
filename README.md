@@ -312,7 +312,7 @@ Activate script that is executed by Keepalived:
 activate_script: true
 ```
 
-# Name of the script to be executed
+###### Name of the script to be executed
 
 Specify the script name to be executed by Keepalived:
 
