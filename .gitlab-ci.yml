@@ -55,7 +55,7 @@ molecule:
 include:
   # Include file to check REUSE-compliance (https://reuse.software/)
   # by running `reuse lint` in a job called `compliance:reuse:`.
-  - project: hifis/gitlab-ci-templates
+  - project: hifis/templates/gitlab-ci
     file: /templates/reuse-compliance.yml
 
 ...
