@@ -7,8 +7,8 @@
 - name: Check that all mandatory variables are defined.
   assert:
     that:
-      - unicast_peers is defined
-      - virtual_ip_address is defined
+      - keepalived_unicast_peers is defined
+      - keepalived_virtual_ip_address is defined
     fail_msg: "Some mandatory variables are not set."
     success_msg: "All mandatory variables are set."
 

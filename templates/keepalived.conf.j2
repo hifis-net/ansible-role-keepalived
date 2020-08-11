@@ -4,59 +4,59 @@
 # SPDX-License-Identifier: Apache-2.0
 
 global_defs {
-{% if activate_script %}
-    script_user {{ script_user }} {{ script_group }}
+{% if keepalived_activate_script %}
+    script_user {{ keepalived_script_user }} {{ keepalived_script_group }}
 {% endif %}
-{% if set_script_security_flag %}
+{% if keepalived_set_script_security_flag %}
     enable_script_security
 {% endif %}
     notification_email {
-        {{ notification_email }}
+        {{ keepalived_notification_email }}
     }
-    notification_email_from {{ notification_email_from }}
-    smtp_server {{ smtp_server }}
+    notification_email_from {{ keepalived_notification_email_from }}
+    smtp_server {{ keepalived_smtp_server }}
     smtp_connect_timeout 30
-{% if router_id is defined %}
-    router_id {{ router_id }}
+{% if keepalived_router_id is defined %}
+    router_id {{ keepalived_router_id }}
 {% endif %}
 }
 
-{% if activate_script %}
-vrrp_script {{ script_name }} {
-    script "{{ script_command }}"
+{% if keepalived_activate_script %}
+vrrp_script {{ keepalived_script_name }} {
+    script "{{ keepalived_script_command }}"
     interval 2
 {% if weight is defined %}
-    weight {{ weight }}
+    weight {{ keepalived_weight }}
 {% endif %}
 }
 {% endif %}
 
 vrrp_instance VI_1 {
 
-    interface {{ interface }}
-    state {{ state }}
-    priority {{ priority }}
+    interface {{ keepalived_interface }}
+    state {{ keepalived_state }}
+    priority {{ keepalived_priority }}
 
-    virtual_router_id {{ virtual_router_id }}
-    unicast_src_ip {{ unicast_src_ip }}
+    virtual_router_id {{ keepalived_virtual_router_id }}
+    unicast_src_ip {{ keepalived_unicast_src_ip }}
     unicast_peer {
-{% for unicast_peer in unicast_peers %}
-        {{ unicast_peer }}
+{% for keepalived_unicast_peer in keepalived_unicast_peers %}
+        {{ keepalived_unicast_peer }}
 {% endfor %}
     }
 
     virtual_ipaddress {
-        {{ virtual_ipaddress_config }}
+        {{ keepalived_virtual_ipaddress_config }}
     }
 
     authentication {
         auth_type PASS
-        auth_pass {{ auth_pass }}
+        auth_pass {{ keepalived_auth_pass }}
     }
 
-{% if activate_script %}
+{% if keepalived_activate_script %}
     track_script {
-        {{ script_name }}
+        {{ keepalived_script_name }}
     }
 {% endif %}
 

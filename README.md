@@ -25,7 +25,7 @@ Role Variables
 Set the unicast peer IP addresses of the Keepalived instance:
 
 ```yaml
-unicast_peer: 
+keepalived_unicast_peers: 
   - '192.168.33.15'
   - '192.168.33.16'
 ```
@@ -35,7 +35,7 @@ unicast_peer:
 Set the virtual IP address of the Keepalived instance:
 
 ```yaml
-virtual_ip_address: '192.168.33.100'
+keepalived_virtual_ip_address: '192.168.33.100'
 ```
 
 #### All other Default Variables
@@ -196,7 +196,7 @@ keepalived_pid_file_dir: "/run/keepalived"
 Configure recipient of notification emails:
 
 ```yaml
-notification_email: 'name@localhost'
+keepalived_notification_email: 'name@localhost'
 ```
 
 ###### Configure notification sender
@@ -204,7 +204,7 @@ notification_email: 'name@localhost'
 Configure sender of notification emails:
 
 ```yaml
-notification_email_from: 'keepalived@localhost'
+keepalived_notification_email_from: 'keepalived@localhost'
 ```
 
 ###### Configure SMTP Server
@@ -212,7 +212,7 @@ notification_email_from: 'keepalived@localhost'
 Configure IP address or FQDN of SMTP server:
 
 ```yaml
-smtp_server: '127.0.0.1'
+keepalived_smtp_server: '127.0.0.1'
 ```
 
 ###### Keepalived instance state MASTER or BACKUP
@@ -220,7 +220,7 @@ smtp_server: '127.0.0.1'
 Set the state of the Keepalived instance to MASTER or BACKUP:
 
 ```yaml
-state: 'BACKUP'
+keepalived_state: 'BACKUP'
 ```
 
 ###### Keepalived instance priority
@@ -228,7 +228,7 @@ state: 'BACKUP'
 Set the priority of the Keepalived instance:
 
 ```yaml
-priority: '99'
+keepalived_priority: '99'
 ```
 
 ###### Keepalived instance router ID
@@ -236,7 +236,7 @@ priority: '99'
 Set unique name of the Keepalived router:
 
 ```yaml
-router_id: 'KEEPALIVED_2'
+keepalived_router_id: 'KEEPALIVED_2'
 ```
 
 ###### Keepalived instance weight
@@ -244,7 +244,7 @@ router_id: 'KEEPALIVED_2'
 Adjust the priority by this weight:
 
 ```yaml
-weight: '0'
+keepalived_weight: '0'
 ```
 
 ###### Keepalived instance unicast source IP address
@@ -252,7 +252,7 @@ weight: '0'
 Set the unicast source IP address of the Keepalived instance:
 
 ```yaml
-unicast_src_ip: '{{ ansible_default_ipv4.address }}'
+keepalived_unicast_src_ip: '{{ ansible_default_ipv4.address }}'
 ```
 
 ###### Keepalived instance network interface
@@ -260,7 +260,7 @@ unicast_src_ip: '{{ ansible_default_ipv4.address }}'
 Set network interface to which the floating IP address is associated:
 
 ```yaml
-interface: "{{ ansible_default_ipv4.interface }}"
+keepalived_interface: "{{ ansible_default_ipv4.interface }}"
 ```
 
 ###### Keepalived instance virtual IP address and network interface
@@ -268,7 +268,7 @@ interface: "{{ ansible_default_ipv4.interface }}"
 Set the virtual IP address and network interface of the Keepalived instance:
 
 ```yaml
-virtual_ipaddress_config: "{{ virtual_ip_address }} dev {{ interface }}"
+keepalived_virtual_ipaddress_config: "{{ keepalived_virtual_ip_address }} dev {{ keepalived_interface }}"
 ```
 
 ###### Keepalived instance authentication password
@@ -276,7 +276,7 @@ virtual_ipaddress_config: "{{ virtual_ip_address }} dev {{ interface }}"
 Set the authentication password of the Keepalived instance:
 
 ```yaml
-auth_pass: 'changeme'
+keepalived_auth_pass: 'changeme'
 ```
 
 ###### Enable script security
@@ -285,7 +285,7 @@ Flag to enable script security to prevent script to run by root user
 if any part of the path is writable by a non-root user:
 
 ```yaml
-set_script_security_flag: true
+keepalived_set_script_security_flag: true
 ```
 
 ###### User for executing Keepalived script
@@ -293,7 +293,7 @@ set_script_security_flag: true
 Specify username to run Keepalived script under:
 
 ```yaml
-script_user: 'haproxy'
+keepalived_script_user: 'haproxy'
 ```
 
 ###### Group for executing Keepalived script
@@ -301,7 +301,7 @@ script_user: 'haproxy'
 Specify groupname to run Keepalived script under:
 
 ```yaml
-script_group: 'haproxy'
+keepalived_script_group: 'haproxy'
 ```
 
 ###### Flag to activate a script to be executed
@@ -309,7 +309,7 @@ script_group: 'haproxy'
 Activate script that is executed by Keepalived:
 
 ```yaml
-activate_script: true
+keepalived_activate_script: true
 ```
 
 ###### Name of the script to be executed
@@ -317,7 +317,7 @@ activate_script: true
 Specify the script name to be executed by Keepalived:
 
 ```yaml
-script_name: 'chk_haproxy_process'
+keepalived_script_name: 'chk_haproxy_process'
 ```
 
 ###### Command of the script to be executed
@@ -325,7 +325,7 @@ script_name: 'chk_haproxy_process'
 Specify the command to be executed by Keepalived:
 
 ```yaml
-script_command: '/usr/bin/killall -0 haproxy'
+keepalived_script_command: '/usr/bin/killall -0 haproxy'
 ```
 
 Dependencies

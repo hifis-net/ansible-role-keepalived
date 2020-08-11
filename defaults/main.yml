@@ -51,37 +51,37 @@ keepalived_service_file_path: "{{ keepalived_systemd_dir }}/{{ keepalived_servic
 keepalived_pid_file_dir: "/run/{{ keepalived_name }}"
 
 # Configure notification email address
-notification_email: 'name@localhost'
+keepalived_notification_email: 'name@localhost'
 # Configure notification sender
-notification_email_from: 'keepalived@localhost'
+keepalived_notification_email_from: 'keepalived@localhost'
 # Configure SMTP Server
-smtp_server: '127.0.0.1'
+keepalived_smtp_server: '127.0.0.1'
 # Keepalived instance authentication password
-auth_pass: 'changeme'
+keepalived_auth_pass: 'changeme'
 # Keepalived instance virtual router ID
-virtual_router_id: '51'
+keepalived_virtual_router_id: '51'
 # Keepalived instance priority
-priority: "{{ '100' if state == 'MASTER' else '99' }}"
+keepalived_priority: "{{ '100' if keepalived_state == 'MASTER' else '99' }}"
 # Keepalived instance state MASTER or BACKUP
-state: 'MASTER'
+keepalived_state: 'MASTER'
 # Keepalived instance network interface
-interface: "{{ ansible_default_ipv4.interface }}"
+keepalived_interface: "{{ ansible_default_ipv4.interface }}"
 # Keepalived instance virtual IP address and network interface
-virtual_ipaddress_config: "{{ virtual_ip_address }} dev {{ interface }}"
+keepalived_virtual_ipaddress_config: "{{ keepalived_virtual_ip_address }} dev {{ keepalived_interface }}"
 # Keepalived instance unicast source IP address
-unicast_src_ip: '{{ ansible_default_ipv4.address }}'
+keepalived_unicast_src_ip: '{{ ansible_default_ipv4.address }}'
 
 # Flag to activate a script to be executed
-activate_script: true
+keepalived_activate_script: true
 # User for executing Keepalived script
-script_user: 'haproxy'
+keepalived_script_user: 'haproxy'
 # Group for executing Keepalived script
-script_group: 'haproxy'
+keepalived_script_group: 'haproxy'
 # Name of the script to be executed
-script_name: 'chk_haproxy_process'
+keepalived_script_name: 'chk_haproxy_process'
 # Command of the script to be executed
-script_command: '/usr/bin/killall -0 haproxy'
+keepalived_script_command: '/usr/bin/killall -0 haproxy'
 # Enable script security
-set_script_security_flag: true
+keepalived_set_script_security_flag: true
 
 ...
