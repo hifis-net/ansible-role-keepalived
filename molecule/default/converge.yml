@@ -12,10 +12,10 @@
       include_role:
         name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
   vars:
-    unicast_peers:
+    keepalived_unicast_peers:
       - '172.17.0.3'
       - '172.17.0.4'
-    virtual_ip_address: "172.17.0.20"
+    keepalived_virtual_ip_address: "172.17.0.20"
 
 
 ...
