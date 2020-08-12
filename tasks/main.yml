@@ -74,6 +74,12 @@
 - name: Continue with installing Keepalived if Keepalived is not already installed or versions are not equal.
   when: not keepalived_installed.stat.exists or not is_keepalived_version_equal
   block:
+    - name: Remove old build directory
+      become: yes
+      file:
+        path: "{{ keepalived_src_dir }}/{{ keepalived_name }}-{{ installed_keepalived_version }}"
+        state: absent
+      when: installed_keepalived_version is defined
 
     - name: Download and extract keepalived archive.
       become: yes
