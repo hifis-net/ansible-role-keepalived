@@ -27,8 +27,10 @@ keepalived_group: 'keepalived'
 
 # Folder to put the Keepalived installation into
 keepalived_base_dir: '/usr/local'
+# Source folder to put the Keepalived build directories into
+keepalived_src_dir: "{{ keepalived_base_dir }}/src"
 # Path to Keepalived build folder
-keepalived_build_dir: "{{ keepalived_base_dir }}/{{ keepalived_name }}"
+keepalived_build_dir: "{{ keepalived_src_dir }}/{{ keepalived_name }}-{{ keepalived_version }}"
 # Folder which contains Keepalived sources
 keepalived_dir: "{{ keepalived_build_dir }}/keepalived"
 # Path to Keepalived binary

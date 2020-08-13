@@ -95,12 +95,20 @@ Name of the Keepalived binary:
 keepalived_name: 'keepalived'
 ```
 
+###### Source folder for Keepalived builds
+
+Source folder to put the Keepalived build directories into:
+
+```yaml
+keepalived_src_dir: "/usr/local/src"
+```
+
 ###### Keepalived build directory
 
 Path to Keepalived build directory:
 
 ```yaml
-keepalived_build_dir: "/usr/local/keepalived"
+keepalived_build_dir: "/usr/local/src/keepalived-2.1.5"
 ```
 
 ###### Keepalived sources directory
@@ -108,7 +116,7 @@ keepalived_build_dir: "/usr/local/keepalived"
 Directory which contains Keepalived sources:
 
 ```yaml
-keepalived_dir: "/usr/local/keepalived/keepalived"
+keepalived_dir: "/usr/local/src/keepalived-2.1.5/keepalived"
 ```
 
 ###### Keepalived binary path
