@@ -124,11 +124,22 @@
 - name: Create Configuration File.
   become: yes
   template:
-    src: keepalived.conf.j2
+    src: "{{ keepalived_conf_template }}"
     dest: "{{ keepalived_conf_file_path }}"
     owner: "{{ keepalived_user }}"
     group: "{{ keepalived_group }}"
     mode: '0644'
+  notify: Reload Keepalived
+
+- name: Copy Keepalived sysconfig file
+  become: yes
+  copy:
+    src: "{{ keepalived_original_sysconfig_file_path }}"
+    dest: "{{ keepalived_sysconfig_file_path }}"
+    owner: "{{ keepalived_user }}"
+    group: "{{ keepalived_group }}"
+    mode: '0644'
+    remote_src: yes
   notify: Reload Keepalived
 
 - name: Create Keepalived Service Unit File.
