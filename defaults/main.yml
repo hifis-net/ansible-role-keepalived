@@ -38,7 +38,7 @@ keepalived_conf_dir: '/etc/keepalived'
 # Path to Keepalived configuration file
 keepalived_conf_file_path: "{{ keepalived_conf_dir }}/{{ keepalived_name }}.conf"
 # Name of the template file for Systemd service
-keepalived_service_template: 'keepalived.service'
+keepalived_service_template: 'keepalived.service.j2'
 # Folder into which Keepalived service file is copied
 keepalived_systemd_dir: '/etc/systemd/system'
 # Name of Keepalived service file

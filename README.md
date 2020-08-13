@@ -148,7 +148,7 @@ keepalived_conf_file_path: '/etc/keepalived/keepalived.conf'
 Name of the template file for Systemd service:
 
 ```yaml
-keepalived_service_template: 'keepalived.service'
+keepalived_service_template: 'keepalived.service.j2'
 ```
 
 ###### Systemd services directory
