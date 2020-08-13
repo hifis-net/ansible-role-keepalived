@@ -135,7 +135,7 @@
 
 - name: Create Keepalived Service Unit File.
   template:
-    src: keepalived.service.j2
+    src: "{{ keepalived_service_template }}"
     dest: "{{ keepalived_service_file_path }}"
     owner: "{{ keepalived_user }}"
     group: "{{ keepalived_group }}"
