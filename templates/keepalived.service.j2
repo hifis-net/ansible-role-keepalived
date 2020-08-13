@@ -10,10 +10,10 @@ Wants=network-online.target
 
 [Service]
 Type=forking
-PIDFile={{ keepalived_pid_file_dir }}/keepalived.pid
+PIDFile={{ keepalived_pid_file_dir }}/{{ keepalived_name }}.pid
 KillMode=process
 EnvironmentFile=-{{ keepalived_build_dir }}/etc/sysconfig/keepalived
-ExecStart={{ keepalived_path }} -p {{ keepalived_pid_file_dir }}/keepalived.pid $KEEPALIVED_OPTIONS
+ExecStart={{ keepalived_path }} -p {{ keepalived_pid_file_dir }}/{{ keepalived_name }}.pid $KEEPALIVED_OPTIONS
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
