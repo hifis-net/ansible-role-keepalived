@@ -16,6 +16,13 @@ Group your changes into these categories:
 
 `Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`.
 
+## [Unreleased]
+
+### Added
+- Optionally allow to specify multiple virtual IP addresses
+([!16](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/16))
+by [tobiashuste](https://gitlab.com/tobiashuste)).
+
 ## [0.1.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.1.0)
 
 ### Added
