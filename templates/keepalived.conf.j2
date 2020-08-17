@@ -46,7 +46,7 @@ vrrp_instance VI_1 {
     }
 
     virtual_ipaddress {
-    {% if keepalived_virtual_ipaddresses is defined %}
+    {% if keepalived_virtual_ipaddress_configs is defined %}
         {% for config in keepalived_virtual_ipaddress_configs %}
         {{ config }}
         {% endfor %}
