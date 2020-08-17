@@ -38,6 +38,17 @@ Set the virtual IP address of the Keepalived instance:
 keepalived_virtual_ip_address: '192.168.33.100'
 ```
 
+###### Optional: List of virtual IP address configs
+
+If you need to configure multiple virtual IP addresses you can define this
+optional variable. This takes precedence over `keepalived_virtual_ip_address`.
+
+```yaml
+keepalived_virtual_ipaddress_configs:
+  - "10.0.10.15 dev eth0"
+  - "10.0.11.15 dev eht1"
+```
+
 #### All other Default Variables
 
 ###### Keepalived version
