@@ -16,7 +16,7 @@ Group your changes into these categories:
 
 `Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`.
 
-## [Unreleased]
+## [0.2.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.0)
 
 ### Added
 - Optionally allow to specify multiple virtual IP addresses
