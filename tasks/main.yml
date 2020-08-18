@@ -8,7 +8,7 @@
   assert:
     that:
       - keepalived_unicast_peers is defined
-      - keepalived_virtual_ip_address is defined
+      - keepalived_virtual_ip_address is defined or keepalived_virtual_ipaddress_configs is defined
     fail_msg: "Some mandatory variables are not set."
     success_msg: "All mandatory variables are set."
 
