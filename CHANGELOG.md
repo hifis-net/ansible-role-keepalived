@@ -23,7 +23,7 @@ Group your changes into these categories:
   ([!17](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/17)
   by [tobiashuste](https://gitlab.com/tobiashuste)).
 
-## [0.2.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.0)
+## [0.2.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.0) - 2020-08-18
 
 ### Added
 - Optionally allow to specify multiple virtual IP addresses
