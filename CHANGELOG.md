@@ -16,14 +16,23 @@ Group your changes into these categories:
 
 `Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`.
 
-## [0.2.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.0)
+## [Unreleased]
+
+### Fixed
+- Fix mandatory variables check for `keepalived_virtual_ipaddress_configs`
+  ([!17](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/17)
+  by [tobiashuste](https://gitlab.com/tobiashuste)).
+
+## [0.2.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.0) - 2020-08-18
+
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.1.0...v0.2.0)
 
 ### Added
 - Optionally allow to specify multiple virtual IP addresses
-([!16](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/16))
+([!16](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/16)
 by [tobiashuste](https://gitlab.com/tobiashuste)).
 
-## [0.1.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.1.0)
+## [0.1.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.1.0) - 2020-08-14
 
 ### Added
 Initial release of the Ansible Keepalived Role.
