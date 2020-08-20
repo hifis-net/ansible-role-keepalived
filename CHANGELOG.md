@@ -16,9 +16,11 @@ Group your changes into these categories:
 
 `Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`.
 
-## [Unreleased]
+## Unreleased
 
-## [[0.2.1]](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.1) - 2020-08-20
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.1...HEAD)
+
+## [0.2.1](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.1) - 2020-08-20
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.0...v0.2.1)
 
@@ -27,7 +29,7 @@ Group your changes into these categories:
   ([!17](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/17)
   by [tobiashuste](https://gitlab.com/tobiashuste)).
 
-## [[0.2.0]](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.0) - 2020-08-18
+## [0.2.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.0) - 2020-08-18
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.1.0...v0.2.0)
 
@@ -36,7 +38,7 @@ Group your changes into these categories:
 ([!16](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/16)
 by [tobiashuste](https://gitlab.com/tobiashuste)).
 
-## [[0.1.0]](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.1.0) - 2020-08-14
+## [0.1.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.1.0) - 2020-08-14
 
 ### Added
 Initial release of the Ansible Keepalived Role.
