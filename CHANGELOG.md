@@ -18,7 +18,7 @@ Group your changes into these categories:
 
 ## Unreleased
 
-[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.1...HEAD)
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.1...master)
 
 ## [0.2.1](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.1) - 2020-08-20
 
