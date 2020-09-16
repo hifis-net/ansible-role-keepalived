@@ -16,7 +16,13 @@ Group your changes into these categories:
 
 `Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`.
 
-## [Unreleased]
+## Unreleased
+
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.1...master)
+
+## [0.2.1](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.1) - 2020-08-20
+
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.0...v0.2.1)
 
 ### Fixed
 - Fix mandatory variables check for `keepalived_virtual_ipaddress_configs`
