@@ -10,6 +10,7 @@ Wants=network-online.target
 
 [Service]
 Type=forking
+RuntimeDirectory=keepalived
 PIDFile={{ keepalived_pid_file_dir }}/{{ keepalived_name }}.pid
 KillMode=process
 EnvironmentFile=-{{ keepalived_build_dir }}/etc/sysconfig/keepalived
