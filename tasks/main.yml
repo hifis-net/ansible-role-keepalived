@@ -130,15 +130,6 @@
     mode: '0644'
   notify: Reload Keepalived
 
-- name: Create Directory for Keepalived PID file.
-  become: yes
-  file:
-    path: "{{ keepalived_pid_file_dir }}"
-    state: directory
-    owner: "{{ keepalived_user }}"
-    group: "{{ keepalived_group }}"
-    mode: '0755'
-
 - name: Create Keepalived Service Unit File.
   template:
     src: "{{ keepalived_service_template }}"
