@@ -323,12 +323,26 @@ Specify groupname to run Keepalived script under:
 keepalived_script_group: 'haproxy'
 ```
 
+###### Flag to activate process tracking
+
+Activate process tracking in keepalived config:
+
+```yaml
+keepalived_enable_process_tracking: true
+```
+
+###### Define which process shall be tracked
+
+```yaml
+keepalived_track_process: 'haproxy'
+```
+
 ###### Flag to activate a script to be executed
 
 Activate script that is executed by Keepalived:
 
 ```yaml
-keepalived_activate_script: true
+keepalived_activate_script: false
 ```
 
 ###### Name of the script to be executed

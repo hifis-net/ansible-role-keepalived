@@ -21,6 +21,14 @@ global_defs {
 {% endif %}
 }
 
+{% if keepalived_enable_process_tracking %}
+vrrp_track_process {{ keepalived_track_process }} {
+    process {{ keepalived_track_process }}
+    quorum 1
+    delay 2
+}
+{% endif %}
+
 {% if keepalived_activate_script %}
 vrrp_script {{ keepalived_script_name }} {
     script "{{ keepalived_script_command }}"
@@ -46,19 +54,25 @@ vrrp_instance VI_1 {
     }
 
     virtual_ipaddress {
-    {% if keepalived_virtual_ipaddress_configs is defined %}
-        {% for config in keepalived_virtual_ipaddress_configs %}
+{% if keepalived_virtual_ipaddress_configs is defined %}
+{% for config in keepalived_virtual_ipaddress_configs %}
         {{ config }}
-        {% endfor %}
-    {% else %}
+{% endfor %}
+{% else %}
         {{ keepalived_virtual_ipaddress_config }}
-    {% endif %}
+{% endif %}
     }
 
     authentication {
         auth_type PASS
         auth_pass {{ keepalived_auth_pass }}
     }
+
+{% if keepalived_enable_process_tracking %}
+    track_process {
+        {{ keepalived_track_process }}
+    }
+{% endif %}
 
 {% if keepalived_activate_script %}
     track_script {
