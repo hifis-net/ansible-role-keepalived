@@ -18,7 +18,11 @@ Group your changes into these categories:
 
 ## Unreleased
 
-[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.1...master)
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.3.0...master)
+
+## [0.3.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.1) - 2020-09-25
+
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.1...v0.3.0)
 
 ### Changed
 - Enable keepalived process tracking
