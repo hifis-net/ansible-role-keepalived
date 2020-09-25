@@ -20,6 +20,11 @@ Group your changes into these categories:
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.1...master)
 
+### Fixed
+- Fix runtime directory not being available after reboot
+  ([!20](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/20)
+  by [tobiashuste](https://gitlab.com/tobiashuste)).
+
 ## [0.2.1](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.1) - 2020-08-20
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.0...v0.2.1)
