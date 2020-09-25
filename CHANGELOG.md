@@ -26,6 +26,9 @@ Group your changes into these categories:
 - Make CI jobs interruptible to support auto-cancellation
   ([!21](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/21)
   by [tobiashuste](https://gitlab.com/tobiashuste)).
+- Cache pipenv dependencies in .gitlab-ci.yml
+  ([!22](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/22)
+  by [tobiashuste](https://gitlab.com/tobiashuste))
 
 ### Fixed
 - Fix runtime directory not being available after reboot
