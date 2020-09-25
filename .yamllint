@@ -7,6 +7,9 @@
 # Based on ansible-lint config
 extends: default
 
+ignore: |
+  .pipenv/
+
 rules:
   braces:
     max-spaces-inside: 1

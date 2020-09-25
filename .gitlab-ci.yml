@@ -16,6 +16,10 @@ variables:
   PY_COLORS: '1'
   ANSIBLE_FORCE_COLOR: '1'
 
+.cache_variables: &cache_variables
+  WORKON_HOME: .pipenv/venvs
+  PIP_CACHE_DIR: .pipenv/pipcache
+
 .before_script_template: &before_script
   # Ansible refuses to read from a world-writeable folder
   - chmod 0750 $CI_PROJECT_DIR
@@ -28,15 +32,21 @@ variables:
 validate:
   stage: lint
   image: python:3.8
+  variables: *cache_variables
   before_script:
     - *before_script
   script:
     # Run Molecule linter.
     - pipenv run molecule lint
+  cache:
+    key: pipenv
+    paths:
+      - .pipenv
 
 molecule:
   stage: test
   image: docker:latest
+  variables: *cache_variables
   services:
     - docker:dind
   before_script:
@@ -54,6 +64,10 @@ molecule:
   script:
     # Run Molecule tests.
     - pipenv run molecule test
+  cache:
+    key: pipenv-alpine
+    paths:
+      - .pipenv
 
 include:
   # Include file to check REUSE-compliance (https://reuse.software/)
