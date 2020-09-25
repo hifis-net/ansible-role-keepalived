@@ -73,8 +73,13 @@ keepalived_virtual_ipaddress_config: "{{ keepalived_virtual_ip_address }} dev {{
 # Keepalived instance unicast source IP address
 keepalived_unicast_src_ip: '{{ ansible_default_ipv4.address }}'
 
+# Enable process tracking
+keepalived_enable_process_tracking: true
+# Define which process shall be tracked
+keepalived_track_process: 'haproxy'
+
 # Flag to activate a script to be executed
-keepalived_activate_script: true
+keepalived_activate_script: false
 # User for executing Keepalived script
 keepalived_script_user: 'haproxy'
 # Group for executing Keepalived script
