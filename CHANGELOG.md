@@ -20,6 +20,11 @@ Group your changes into these categories:
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.1...master)
 
+### Changed
+- Enable keepalived process tracking
+  ([!19](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/19)
+  by [tobiashuste](https://gitlab.com/tobiashuste)).
+
 ### Fixed
 - Fix runtime directory not being available after reboot
   ([!20](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/20)
