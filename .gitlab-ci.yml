@@ -8,6 +8,9 @@ stages:
   - lint
   - test
 
+default:
+  interruptible: true
+
 variables:
   # tell Python-based tools to force color output
   PY_COLORS: '1'

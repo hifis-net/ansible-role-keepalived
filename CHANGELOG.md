@@ -23,6 +23,8 @@ Group your changes into these categories:
 ### Changed
 - Enable keepalived process tracking
   ([!19](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/19)
+- Make CI jobs interruptible to support auto-cancellation
+  ([!21](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/21)
   by [tobiashuste](https://gitlab.com/tobiashuste)).
 
 ### Fixed
