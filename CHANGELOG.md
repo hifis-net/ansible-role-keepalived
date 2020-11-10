@@ -20,6 +20,11 @@ Group your changes into these categories:
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.3.0...master)
 
+### Added
+- Enable check-mode
+  ([!27](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/27)
+  by [Normo](https://gitlab.com/Normo)).
+
 ## [0.3.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.1) - 2020-09-25
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.1...v0.3.0)
@@ -27,6 +32,7 @@ Group your changes into these categories:
 ### Changed
 - Enable keepalived process tracking
   ([!19](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/19)
+  by [tobiashuste](https://gitlab.com/tobiashuste)).
 - Make CI jobs interruptible to support auto-cancellation
   ([!21](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/21)
   by [tobiashuste](https://gitlab.com/tobiashuste)).

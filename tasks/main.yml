@@ -55,6 +55,7 @@
   register: keepalived_version_installed
   when: keepalived_installed.stat.exists
   changed_when: false
+  check_mode: no
 
 - name: Put value of installed version into an Ansible fact.
   set_fact:
