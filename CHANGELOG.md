@@ -18,14 +18,18 @@ Group your changes into these categories:
 
 ## Unreleased
 
-[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.3.0...master)
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.4.0...master)
+
+## [0.4.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.4.0) - 2020-11-11
+
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.3.0...v0.4.0)
 
 ### Added
 - Enable check-mode
   ([!27](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/27)
   by [Normo](https://gitlab.com/Normo)).
 
-## [0.3.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.2.1) - 2020-09-25
+## [0.3.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.3.0) - 2020-09-25
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.1...v0.3.0)
 
