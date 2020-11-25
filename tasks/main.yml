@@ -149,9 +149,7 @@
     owner: "{{ keepalived_user }}"
     group: "{{ keepalived_group }}"
     mode: '0644'
-  notify:
-    - Reread Systemd Configs
-    - Restart Keepalived
+  notify: Restart Keepalived
 
 - name: Start Keepalived Systemd Service.
   become: yes
@@ -159,5 +157,6 @@
     name: "{{ keepalived_name }}"
     state: started
     enabled: yes
+    daemon_reload: yes
 
 ...

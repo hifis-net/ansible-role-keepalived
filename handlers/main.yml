@@ -4,16 +4,12 @@
 # SPDX-License-Identifier: Apache-2.0
 
 ---
-
-- name: Reread Systemd Configs
-  systemd:
-    daemon_reload: yes
-
 - name: Restart Keepalived
   become: yes
   service:
     name: "{{ keepalived_name }}"
     state: restarted
+    daemon_reload: yes
   when: keepalived_installed.stat.exists
 
 - name: Reload Keepalived
@@ -21,5 +17,6 @@
   service:
     name: "{{ keepalived_name }}"
     state: reloaded
+    daemon_reload: yes
 
 ...
