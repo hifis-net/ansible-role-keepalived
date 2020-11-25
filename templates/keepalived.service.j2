@@ -13,7 +13,7 @@ Type=forking
 RuntimeDirectory=keepalived
 PIDFile={{ keepalived_pid_file_dir }}/{{ keepalived_name }}.pid
 KillMode=process
-EnvironmentFile=-{{ keepalived_build_dir }}/etc/sysconfig/keepalived
+EnvironmentFile=-{{ keepalived_sysconfig_file_path }}
 ExecStart={{ keepalived_path }} -p {{ keepalived_pid_file_dir }}/{{ keepalived_name }}.pid $KEEPALIVED_OPTIONS
 ExecReload=/bin/kill -HUP $MAINPID
 

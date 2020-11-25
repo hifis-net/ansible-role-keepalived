@@ -20,6 +20,11 @@ Group your changes into these categories:
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.4.0...master)
 
+### Changed
+- Put sysconfig file into config directory
+  ([!12](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/12)
+  by [christian.hueser.hzdr](https://gitlab.com/christian.hueser.hzdr))
+
 ## [0.4.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.4.0) - 2020-11-11
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.3.0...v0.4.0)

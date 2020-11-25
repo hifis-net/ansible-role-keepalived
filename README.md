@@ -146,6 +146,14 @@ URL from which Keepalived can be downloaded:
 keepalived_download_url: 'https://www.keepalived.org/software/keepalived-2.1.5.tar.gz'
 ```
 
+###### Keepalived configuration file template name
+
+Name of the template file for Keepalived configuration file
+
+```yaml
+keepalived_conf_template: 'keepalived.conf.j2'
+```
+
 ###### Keepalived configuration directory
 
 Directory which contains Keepalived configuration files:
