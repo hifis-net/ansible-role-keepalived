@@ -6,7 +6,7 @@ SPDX-License-Identifier: Apache-2.0
 -->
 
 Keepalived_Role
-==========
+===============
 
 Role sets up Keepalived in a High Availability and Scalability context.
 
@@ -106,6 +106,14 @@ Name of the Keepalived binary:
 keepalived_name: 'keepalived'
 ```
 
+###### Binary folder for Keepalived executable
+
+Binary folder to put the Keepalived executable into:
+
+```yaml
+keepalived_binary_dir: "/usr/local/sbin"
+```
+
 ###### Source folder for Keepalived builds
 
 Source folder to put the Keepalived build directories into:
@@ -130,12 +138,20 @@ Directory which contains Keepalived sources:
 keepalived_dir: "/usr/local/src/keepalived-2.1.5/keepalived"
 ```
 
-###### Keepalived binary path
+###### Keepalived built binary path
 
-Path to the Keepalived binary:
+Path to the built Keepalived binary:
 
 ```yaml
-keepalived_path: '/usr/local/keepalived/sbin/keepalived'
+keepalived_built_binary_path: '/usr/local/src/keepalived-2.1.5/sbin/keepalived'
+```
+
+###### Keepalived executable path
+
+Path to the Keepalived executable:
+
+```yaml
+keepalived_executable_path: '/usr/local/sbin/keepalived'
 ```
 
 ###### Keepalived Download URL
