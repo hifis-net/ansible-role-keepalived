@@ -38,7 +38,7 @@
 
 - name: Check whether Keepalived binary is installed.
   stat:
-    path: "{{ keepalived_path }}"
+    path: "{{ keepalived_executable_path }}"
   register: keepalived_installed
 
 - name: Create Keepalived build directory.
@@ -51,7 +51,7 @@
 
 - name: Get Keepalived version.
   command:
-    cmd: "{{ keepalived_path }} --version"
+    cmd: "{{ keepalived_executable_path }} --version"
   register: keepalived_version_installed
   when: keepalived_installed.stat.exists
   changed_when: false
@@ -92,7 +92,7 @@
           - "--strip-components=1"
         owner: "{{ keepalived_user }}"
         group: "{{ keepalived_group }}"
-        mode: '0755'
+        mode: "0755"
 
     - name: Configure Keepalived to be build.
       become: yes
@@ -111,6 +111,16 @@
         chdir: "{{ keepalived_build_dir }}"
         target: install
       notify: Restart Keepalived
+
+    - name: Copy Keepalived binary into {{ keepalived_binary_dir }}
+      become: yes
+      copy:
+        src: "{{ keepalived_build_path }}"
+        dest: "{{ keepalived_executable_path }}"
+        owner: "{{ keepalived_user }}"
+        group: "{{ keepalived_group }}"
+        mode: "0755"
+        remote_src: yes
 
 - name: Create Keepalived Configuration Directory.
   become: yes
