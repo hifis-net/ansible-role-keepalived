@@ -96,7 +96,7 @@
 
     - name: Configure Keepalived to be build.
       become: yes
-      command: "./configure --prefix={{ keepalived_build_dir }}"
+      command: "./configure"
       args:
         chdir: "{{ keepalived_build_dir }}"
 
@@ -111,16 +111,6 @@
         chdir: "{{ keepalived_build_dir }}"
         target: install
       notify: Restart Keepalived
-
-    - name: Copy Keepalived binary into {{ keepalived_binary_dir }}
-      become: yes
-      copy:
-        src: "{{ keepalived_build_path }}"
-        dest: "{{ keepalived_executable_path }}"
-        owner: "{{ keepalived_user }}"
-        group: "{{ keepalived_group }}"
-        mode: "0755"
-        remote_src: yes
 
 - name: Create Keepalived Configuration Directory.
   become: yes

@@ -46,7 +46,7 @@ keepalived_conf_dir: '/etc/keepalived'
 # Path to Keepalived configuration file
 keepalived_conf_file_path: "{{ keepalived_conf_dir }}/{{ keepalived_name }}.conf"
 # Path to original Keepalived sysconfig file
-keepalived_original_sysconfig_file_path: "{{ keepalived_build_dir }}/etc/sysconfig/{{ keepalived_name }}"
+keepalived_original_sysconfig_file_path: "{{ keepalived_dir }}/etc/sysconfig/{{ keepalived_name }}"
 # Path to Keepalived sysconfig file
 keepalived_sysconfig_file_path: "{{ keepalived_conf_dir }}/{{ keepalived_name }}.sysconfig"
 # Name of the template file for Systemd service
