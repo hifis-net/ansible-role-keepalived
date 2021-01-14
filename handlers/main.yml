@@ -10,7 +10,6 @@
     name: "{{ keepalived_name }}"
     state: restarted
     daemon_reload: yes
-  when: keepalived_installed.stat.exists
 
 - name: Reload Keepalived
   become: yes
