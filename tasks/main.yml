@@ -92,7 +92,7 @@
           - "--strip-components=1"
         owner: "{{ keepalived_user }}"
         group: "{{ keepalived_group }}"
-        mode: "0755"
+        mode: '0755'
 
     - name: Configure Keepalived to be build.
       become: yes
