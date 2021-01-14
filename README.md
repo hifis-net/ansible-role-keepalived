@@ -6,7 +6,7 @@ SPDX-License-Identifier: Apache-2.0
 -->
 
 Keepalived_Role
-===============
+==========
 
 Role sets up Keepalived in a High Availability and Scalability context.
 
