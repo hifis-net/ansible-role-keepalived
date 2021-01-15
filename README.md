@@ -7,11 +7,11 @@ SPDX-License-Identifier: Apache-2.0
 
 # Keepalived_Role
 
-Role sets up Keepalived in a High Availability and Scalability context.
+A role to set up Keepalived in a high availability and scalability context.
 
 ## Requirements
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+None.
 
 ## Role Variables
 
@@ -53,7 +53,7 @@ keepalived_virtual_ipaddress_configs:
 Variable to pin the Keepalived version to a certain value:
 
 ```yaml
-keepalived_version: '2.1.5'
+keepalived_version: '2.2.0'
 ```
 
 #### List of dependencies of Keepalived
@@ -124,7 +124,7 @@ keepalived_src_dir: "/usr/local/src"
 Path to Keepalived build directory:
 
 ```yaml
-keepalived_build_dir: "/usr/local/src/keepalived-2.1.5"
+keepalived_build_dir: "/usr/local/src/keepalived-2.2.0"
 ```
 
 #### Keepalived sources directory
@@ -132,7 +132,7 @@ keepalived_build_dir: "/usr/local/src/keepalived-2.1.5"
 Directory which contains Keepalived sources:
 
 ```yaml
-keepalived_dir: "/usr/local/src/keepalived-2.1.5/keepalived"
+keepalived_dir: "/usr/local/src/keepalived-2.2.0/keepalived"
 ```
 
 #### Keepalived built binary path
@@ -140,7 +140,7 @@ keepalived_dir: "/usr/local/src/keepalived-2.1.5/keepalived"
 Path to the built Keepalived binary:
 
 ```yaml
-keepalived_built_binary_path: '/usr/local/src/keepalived-2.1.5/sbin/keepalived'
+keepalived_built_binary_path: '/usr/local/src/keepalived-2.2.0/sbin/keepalived'
 ```
 
 #### Keepalived executable path
@@ -156,7 +156,7 @@ keepalived_executable_path: '/usr/local/sbin/keepalived'
 URL from which Keepalived can be downloaded:
 
 ```yaml
-keepalived_download_url: 'https://www.keepalived.org/software/keepalived-2.1.5.tar.gz'
+keepalived_download_url: 'https://www.keepalived.org/software/keepalived-2.2.0.tar.gz'
 ```
 
 #### Keepalived configuration file template name
@@ -212,7 +212,7 @@ keepalived_service_file: 'keepalived.service'
 Path to Keepalived service template file: 
 
 ```yaml
-keepalived_service_template_file_path: '/usr/local/keepalived/keepalived/keepalived.service'
+keepalived_service_template_file_path: '/usr/local/src/keepalived-2.2.0/keepalived/keepalived.service'
 ```
 
 #### Keepalived service file path
@@ -384,15 +384,24 @@ keepalived_script_command: '/usr/bin/killall -0 haproxy'
 
 ## Dependencies
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
+
+Note: This role is intended for use with, but not limited to, the
+[hifis.haproxy](https://gitlab.com/hifis/ansible/haproxy-role) role.
 
 ## Example Playbook
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+- hosts: loadbalancers
+  roles:
+    - role: hifis.keepalived
+      vars:
+        keepalived_virtual_ip_address: '192.168.33.100'
+        keepalived_unicast_peers:
+          - '192.168.33.15'
+          - '192.168.33.16'
+```
 
 ## License
 
@@ -400,4 +409,4 @@ Including an example of how to use your role (for instance, with variables passe
 
 ## Author Information
 
-HIFIS Software Team (please visit [HIFIS Software Webpage](https://software.hifis.net))
+[HIFIS Software Services Team](https://software.hifis.net)
