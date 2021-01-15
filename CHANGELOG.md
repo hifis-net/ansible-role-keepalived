@@ -20,6 +20,13 @@ Group your changes into these categories:
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.4.0...master)
 
+### Upgrade notes
+The keepalived executable has been moved from the build directory
+`/usr/local/src/keepalived-x.y.z/sbin/keepalived` to
+`/usr/local/sbin/keepalived`. Due to this fact, the build directory of the
+previous version is not removed during an upgrade. This needs to be done
+manually.
+
 ### Changed
 - Put sysconfig file into config directory
   ([!12](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/12)
@@ -27,6 +34,12 @@ Group your changes into these categories:
 - Simplify systemd config reload
   ([!30](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/30)
   by [Normo](https://gitlab.com/Normo)).
+
+### Fixed
+- Resolve "Upgrading Keepalived executable does not work as expected due to
+  wrong path variables"
+  ([!32](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/32)
+  by [christian.hueser.hzdr](https://gitlab.com/christian.hueser.hzdr)).
 
 ## [0.4.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.4.0) - 2020-11-11
 
