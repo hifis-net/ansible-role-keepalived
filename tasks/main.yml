@@ -38,7 +38,7 @@
 
 - name: Check whether Keepalived binary is installed.
   stat:
-    path: "{{ keepalived_path }}"
+    path: "{{ keepalived_executable_path }}"
   register: keepalived_installed
 
 - name: Create Keepalived build directory.
@@ -51,7 +51,7 @@
 
 - name: Get Keepalived version.
   command:
-    cmd: "{{ keepalived_path }} --version"
+    cmd: "{{ keepalived_executable_path }} --version"
   register: keepalived_version_installed
   when: keepalived_installed.stat.exists
   changed_when: false
@@ -96,7 +96,7 @@
 
     - name: Configure Keepalived to be build.
       become: yes
-      command: "./configure --prefix={{ keepalived_build_dir }}"
+      command: "./configure"
       args:
         chdir: "{{ keepalived_build_dir }}"
 
