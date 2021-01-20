@@ -78,6 +78,7 @@
   block:
 
     - name: Create temporary Keepalived build directory.
+      become: yes
       ansible.builtin.tempfile:
         state: directory
         prefix: "{{ keepalived_name }}-{{ keepalived_version }}_"
@@ -128,6 +129,13 @@
         mode: '0644'
         remote_src: yes
       when: not ansible_check_mode
+  always:
+    - name: Remove temporary build directory
+      become: yes
+      file:
+        path: "{{ keepalived_build_dir }}"
+        state: absent
+      check_mode: no
 
 - name: Create Configuration File.
   become: yes
