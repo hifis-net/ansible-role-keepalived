@@ -34,6 +34,9 @@ manually.
 - Simplify systemd config reload
   ([!30](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/30)
   by [Normo](https://gitlab.com/Normo)).
+- Use a temporary directory as build directory
+  ([!34](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/34)
+  by [Normo](https://gitlab.com/Normo)).
 
 ### Fixed
 - Resolve "Upgrading Keepalived executable does not work as expected due to
