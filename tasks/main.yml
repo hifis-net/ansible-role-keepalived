@@ -88,13 +88,6 @@
       set_fact:
         keepalived_build_dir: "{{ tempdir.path }}"
 
-    - name: Remove old build directory
-      become: yes
-      file:
-        path: "{{ keepalived_src_dir }}/{{ keepalived_name }}-{{ installed_keepalived_version }}"
-        state: absent
-      when: installed_keepalived_version is defined
-
     - name: Download and extract keepalived archive.
       become: yes
       unarchive:
