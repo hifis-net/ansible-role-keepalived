@@ -119,14 +119,6 @@ Source folder to put the Keepalived build directories into:
 keepalived_src_dir: "/usr/local/src"
 ```
 
-#### Keepalived build directory
-
-Path to Keepalived build directory:
-
-```yaml
-keepalived_build_dir: "/usr/local/src/keepalived-2.2.0"
-```
-
 #### Keepalived sources directory
 
 Directory which contains Keepalived sources:
