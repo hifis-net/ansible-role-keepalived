@@ -82,6 +82,7 @@
         state: directory
         prefix: "{{ keepalived_name }}-{{ keepalived_version }}_"
       register: tempdir
+      check_mode: no
 
     - name: Store temporary build directory path
       set_fact:
