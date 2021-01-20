@@ -134,6 +134,7 @@
         group: "{{ keepalived_group }}"
         mode: '0644'
         remote_src: yes
+      when: not ansible_check_mode
 
 - name: Create Configuration File.
   become: yes
