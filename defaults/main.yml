@@ -31,8 +31,6 @@ keepalived_base_dir: '/usr/local'
 keepalived_binary_dir: "{{ keepalived_base_dir }}/sbin"
 # Source folder to put the Keepalived build directories into
 keepalived_src_dir: "{{ keepalived_base_dir }}/src"
-# Path to Keepalived build folder
-keepalived_build_dir: "{{ keepalived_src_dir }}/{{ keepalived_name }}-{{ keepalived_version }}"
 # Folder which contains Keepalived sources
 keepalived_dir: "{{ keepalived_build_dir }}/keepalived"
 # Path to build Keepalived binary
@@ -45,8 +43,6 @@ keepalived_conf_template: 'keepalived.conf.j2'
 keepalived_conf_dir: '/etc/keepalived'
 # Path to Keepalived configuration file
 keepalived_conf_file_path: "{{ keepalived_conf_dir }}/{{ keepalived_name }}.conf"
-# Path to original Keepalived sysconfig file
-keepalived_original_sysconfig_file_path: "{{ keepalived_dir }}/etc/sysconfig/{{ keepalived_name }}"
 # Path to Keepalived sysconfig file
 keepalived_sysconfig_file_path: "{{ keepalived_conf_dir }}/{{ keepalived_name }}.sysconfig"
 # Name of the template file for Systemd service
