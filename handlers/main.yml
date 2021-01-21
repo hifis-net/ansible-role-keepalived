@@ -7,14 +7,14 @@
 - name: Restart Keepalived
   become: yes
   service:
-    name: "{{ keepalived_name }}"
+    name: keepalived
     state: restarted
     daemon_reload: yes
 
 - name: Reload Keepalived
   become: yes
   service:
-    name: "{{ keepalived_name }}"
+    name: keepalived
     state: reloaded
     daemon_reload: yes
 
