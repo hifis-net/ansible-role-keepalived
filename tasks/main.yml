@@ -36,18 +36,19 @@
     shell: '/usr/sbin/nologin'
     state: present
 
-- name: Check whether Keepalived binary is installed.
-  stat:
-    path: "{{ keepalived_executable_path }}"
-  register: keepalived_installed
-
-- name: Create Keepalived build directory.
+- name: Create Keepalived Configuration Directory.
+  become: yes
   file:
-    path: "{{ keepalived_build_dir }}"
+    path: "{{ keepalived_conf_dir }}"
     state: directory
     owner: "{{ keepalived_user }}"
     group: "{{ keepalived_group }}"
     mode: '0755'
+
+- name: Check whether Keepalived binary is installed.
+  stat:
+    path: "{{ keepalived_executable_path }}"
+  register: keepalived_installed
 
 - name: Get Keepalived version.
   command:
@@ -75,12 +76,18 @@
 - name: Continue with installing Keepalived if Keepalived is not already installed or versions are not equal.
   when: not keepalived_installed.stat.exists or not is_keepalived_version_equal
   block:
-    - name: Remove old build directory
+
+    - name: Create temporary Keepalived build directory.
       become: yes
-      file:
-        path: "{{ keepalived_src_dir }}/{{ keepalived_name }}-{{ installed_keepalived_version }}"
-        state: absent
-      when: installed_keepalived_version is defined
+      ansible.builtin.tempfile:
+        state: directory
+        prefix: "{{ keepalived_name }}-{{ keepalived_version }}_"
+      register: tempdir
+      check_mode: no
+
+    - name: Store temporary build directory path
+      set_fact:
+        keepalived_build_dir: "{{ tempdir.path }}"
 
     - name: Download and extract keepalived archive.
       become: yes
@@ -112,14 +119,23 @@
         target: install
       notify: Restart Keepalived
 
-- name: Create Keepalived Configuration Directory.
-  become: yes
-  file:
-    path: "{{ keepalived_conf_dir }}"
-    state: directory
-    owner: "{{ keepalived_user }}"
-    group: "{{ keepalived_group }}"
-    mode: '0755'
+    - name: Copy Keepalived sysconfig file
+      become: yes
+      copy:
+        src: "{{ keepalived_build_dir }}/keepalived/etc/sysconfig/keepalived"
+        dest: "{{ keepalived_sysconfig_file_path }}"
+        owner: "{{ keepalived_user }}"
+        group: "{{ keepalived_group }}"
+        mode: '0644'
+        remote_src: yes
+      when: not ansible_check_mode
+  always:
+    - name: Remove temporary build directory
+      become: yes
+      file:
+        path: "{{ keepalived_build_dir }}"
+        state: absent
+      check_mode: no
 
 - name: Create Configuration File.
   become: yes
@@ -129,17 +145,6 @@
     owner: "{{ keepalived_user }}"
     group: "{{ keepalived_group }}"
     mode: '0644'
-  notify: Reload Keepalived
-
-- name: Copy Keepalived sysconfig file
-  become: yes
-  copy:
-    src: "{{ keepalived_original_sysconfig_file_path }}"
-    dest: "{{ keepalived_sysconfig_file_path }}"
-    owner: "{{ keepalived_user }}"
-    group: "{{ keepalived_group }}"
-    mode: '0644'
-    remote_src: yes
   notify: Reload Keepalived
 
 - name: Create Keepalived Service Unit File.
