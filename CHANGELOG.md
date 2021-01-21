@@ -18,7 +18,11 @@ Group your changes into these categories:
 
 ## Unreleased
 
-[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.4.0...master)
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.5.0...master)
+
+## [0.5.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.5.0) - 2021-01-21
+
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.4.0...v0.5.0)
 
 ### Upgrade notes
 The keepalived executable has been moved from the build directory
