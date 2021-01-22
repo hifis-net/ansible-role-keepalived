@@ -81,7 +81,7 @@
       become: yes
       ansible.builtin.tempfile:
         state: directory
-        prefix: "{{ keepalived_name }}-{{ keepalived_version }}_"
+        prefix: "keepalived-{{ keepalived_version }}_"
       register: tempdir
       check_mode: no
 
@@ -159,7 +159,7 @@
 - name: Start Keepalived Systemd Service.
   become: yes
   service:
-    name: "{{ keepalived_name }}"
+    name: keepalived
     state: started
     enabled: yes
     daemon_reload: yes

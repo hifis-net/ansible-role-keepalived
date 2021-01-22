@@ -87,54 +87,6 @@ Specify Keepalived group to be created for Keepalived:
 keepalived_group: 'keepalived'
 ```
 
-#### Directory to put the Keepalived installation into
-
-Select a directory to install Keepalived into:
-
-```yaml
-keepalived_base_dir: '/usr/local'
-```
-
-#### Keepalived binary name
-
-Name of the Keepalived binary:
-
-```yaml
-keepalived_name: 'keepalived'
-```
-
-#### Binary folder for Keepalived executable
-
-Binary folder to put the Keepalived executable into:
-
-```yaml
-keepalived_binary_dir: "/usr/local/sbin"
-```
-
-#### Source folder for Keepalived builds
-
-Source folder to put the Keepalived build directories into:
-
-```yaml
-keepalived_src_dir: "/usr/local/src"
-```
-
-#### Keepalived sources directory
-
-Directory which contains Keepalived sources:
-
-```yaml
-keepalived_dir: "/usr/local/src/keepalived-2.2.0/keepalived"
-```
-
-#### Keepalived built binary path
-
-Path to the built Keepalived binary:
-
-```yaml
-keepalived_built_binary_path: '/usr/local/src/keepalived-2.2.0/sbin/keepalived'
-```
-
 #### Keepalived executable path
 
 Path to the Keepalived executable:
@@ -175,36 +127,20 @@ Path to Keepalived configuration file:
 keepalived_conf_file_path: '/etc/keepalived/keepalived.conf'
 ```
 
+#### Keepalived sysconfig file path 
+
+Path to Keepalived sysconfig file:
+
+```yaml
+keepalived_sysconfig_file_path: "/etc/keepalived/keepalived.sysconfig"
+```
+
 #### Systemd service template file name
 
 Name of the template file for Systemd service:
 
 ```yaml
 keepalived_service_template: 'keepalived.service.j2'
-```
-
-#### Systemd services directory
-
-Directory into which the Keepalived service file is copied:
-
-```yaml
-keepalived_systemd_dir: '/etc/systemd/system'
-```
-
-#### Keepalived service file name
-
-Name of Keepalived service file:
-
-```yaml
-keepalived_service_file: 'keepalived.service'
-```
-
-#### Keepalived service template file path
-
-Path to Keepalived service template file: 
-
-```yaml
-keepalived_service_template_file_path: '/usr/local/src/keepalived-2.2.0/keepalived/keepalived.service'
 ```
 
 #### Keepalived service file path
@@ -215,12 +151,12 @@ Path to Keepalived service file:
 keepalived_service_file_path: '/etc/systemd/system/keepalived.service'
 ```
 
-#### Directory for Keepalived PID file
+#### Keepalived PID file path
 
-Specify in which directory the Keepalived PID file should be created:
+Path to the Keepalived PID file:
 
 ```yaml
-keepalived_pid_file_dir: "/run/keepalived"
+keepalived_pid_file_path: "/run/keepalived/keepalived.pid"
 ```
 
 #### Configure notification email address
