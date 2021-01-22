@@ -20,6 +20,11 @@ Group your changes into these categories:
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.5.0...master)
 
+### Changed
+- Resolve "Refactor file path variables"
+  ([!35](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/35)
+  by [Normo](https://gitlab.com/Normo)).
+
 ## [0.5.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.5.0) - 2021-01-21
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.4.0...v0.5.0)
