@@ -71,22 +71,6 @@ keepalived_dependencies:
   - 'libsnmp-dev'
 ```
 
-#### Name of Keepalived user
-
-Specify Keepalived user to be created for Keepalived:
-
-```yaml
-keepalived_user: 'keepalived'
-```
-
-#### Name of Keepalived group
-
-Specify Keepalived group to be created for Keepalived:
-
-```yaml
-keepalived_group: 'keepalived'
-```
-
 #### Keepalived executable path
 
 Path to the Keepalived executable:
