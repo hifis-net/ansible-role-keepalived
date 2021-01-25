@@ -30,6 +30,9 @@ Group your changes into these categories:
 - Remove keepalived user and group
   ([!39](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/39)
   by [Normo](https://gitlab.com/Normo)).
+- Update role meta information
+  ([!38](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/38)
+  by [Normo](https://gitlab.com/Normo)).
 
 ## [0.5.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.5.0) - 2021-01-21
 
