@@ -18,7 +18,7 @@ Group your changes into these categories:
 
 ## Unreleased
 
-[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.5.0...master)
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.5.0...main)
 
 ### Changed
 - Resolve "Refactor file path variables"
@@ -33,6 +33,10 @@ Group your changes into these categories:
 - Update role meta information
   ([!38](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/38)
   by [Normo](https://gitlab.com/Normo)).
+- Rename default branch to 'main'
+  ([!41](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/41)
+  by [Normo](https://gitlab.com/Normo)).
+
 
 ## [0.5.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.5.0) - 2021-01-21
 
