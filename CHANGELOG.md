@@ -20,6 +20,11 @@ Group your changes into these categories:
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.5.0...main)
 
+### Added
+- Add keepalived config verification task
+  ([!42](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/42)
+  by [Normo](https://gitlab.com/Normo)).
+
 ### Changed
 - Resolve "Refactor file path variables"
   ([!35](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/35)
