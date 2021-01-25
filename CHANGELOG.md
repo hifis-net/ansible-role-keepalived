@@ -24,6 +24,9 @@ Group your changes into these categories:
 - Resolve "Refactor file path variables"
   ([!35](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/35)
   by [Normo](https://gitlab.com/Normo)).
+- Set keepalived 2.2.1 as default version
+  ([!37](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/37)
+  by [Normo](https://gitlab.com/Normo)).
 
 ## [0.5.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.5.0) - 2021-01-21
 
