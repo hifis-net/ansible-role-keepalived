@@ -18,12 +18,6 @@ keepalived_dependencies:
   - 'libnl-genl-3-dev'
   - 'libsnmp-dev'
 
-# Name of Keepalived user
-keepalived_user: 'keepalived'
-# Name of Keepalived group
-keepalived_group: 'keepalived'
-
-
 # Path to Keepalived executable
 keepalived_executable_path: "/usr/local/sbin/keepalived"
 

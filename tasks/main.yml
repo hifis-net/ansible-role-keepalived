@@ -19,30 +19,13 @@
     state: present
     update_cache: yes
 
-- name: Create Keepalived Group.
-  become: yes
-  group:
-    name: "{{ keepalived_group }}"
-    system: yes
-    state: present
-
-- name: Add Keepalived System User.
-  become: yes
-  user:
-    name: "{{ keepalived_user }}"
-    group: "{{ keepalived_group }}"
-    system: yes
-    create_home: no
-    shell: '/usr/sbin/nologin'
-    state: present
-
 - name: Create Keepalived Configuration Directory.
   become: yes
   file:
     path: "{{ keepalived_conf_dir }}"
     state: directory
-    owner: "{{ keepalived_user }}"
-    group: "{{ keepalived_group }}"
+    owner: root
+    group: root
     mode: '0755'
 
 - name: Check whether Keepalived binary is installed.
@@ -97,8 +80,8 @@
         remote_src: yes
         extra_opts:
           - "--strip-components=1"
-        owner: "{{ keepalived_user }}"
-        group: "{{ keepalived_group }}"
+        owner: root
+        group: root
         mode: '0755'
 
     - name: Configure Keepalived to be build.
@@ -124,8 +107,8 @@
       copy:
         src: "{{ keepalived_build_dir }}/keepalived/etc/sysconfig/keepalived"
         dest: "{{ keepalived_sysconfig_file_path }}"
-        owner: "{{ keepalived_user }}"
-        group: "{{ keepalived_group }}"
+        owner: root
+        group: root
         mode: '0644'
         remote_src: yes
       when: not ansible_check_mode
@@ -142,8 +125,8 @@
   template:
     src: "{{ keepalived_conf_template }}"
     dest: "{{ keepalived_conf_file_path }}"
-    owner: "{{ keepalived_user }}"
-    group: "{{ keepalived_group }}"
+    owner: root
+    group: root
     mode: '0644'
   notify: Reload Keepalived
 
@@ -151,8 +134,8 @@
   template:
     src: "{{ keepalived_service_template }}"
     dest: "{{ keepalived_service_file_path }}"
-    owner: "{{ keepalived_user }}"
-    group: "{{ keepalived_group }}"
+    owner: root
+    group: root
     mode: '0644'
   notify: Restart Keepalived
 
