@@ -27,6 +27,9 @@ Group your changes into these categories:
 - Set keepalived 2.2.1 as default version
   ([!37](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/37)
   by [Normo](https://gitlab.com/Normo)).
+- Remove keepalived user and group
+  ([!39](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/39)
+  by [Normo](https://gitlab.com/Normo)).
 
 ## [0.5.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.5.0) - 2021-01-21
 
