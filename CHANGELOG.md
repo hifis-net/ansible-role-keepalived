@@ -18,7 +18,11 @@ Group your changes into these categories:
 
 ## Unreleased
 
-[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.5.0...main)
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v1.0.0...main)
+
+## [1.0.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v1.0.0) - 2021-01-26
+
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.5.0...v1.0.0)
 
 ### Added
 - Add keepalived config verification task
