@@ -41,6 +41,9 @@ Group your changes into these categories:
 - Rename default branch to 'main'
   ([!41](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/41)
   by [Normo](https://gitlab.com/Normo)).
+- Update virtual env packages
+  ([!43](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/43)
+  by [Normo](https://gitlab.com/Normo)).
 
 
 ## [0.5.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.5.0) - 2021-01-21
