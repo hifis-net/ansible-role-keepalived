@@ -44,6 +44,9 @@ Group your changes into these categories:
 - Update virtual env packages
   ([!43](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/43)
   by [Normo](https://gitlab.com/Normo)).
+- Add variable to configure `max_auto_priority`
+  ([!44](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/44)
+  by [Normo](https://gitlab.com/Normo)).
 
 
 ## [0.5.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.5.0) - 2021-01-21
