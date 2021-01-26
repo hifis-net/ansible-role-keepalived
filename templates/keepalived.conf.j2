@@ -19,6 +19,9 @@ global_defs {
 {% if keepalived_router_id is defined %}
     router_id {{ keepalived_router_id }}
 {% endif %}
+{% if keepalived_max_auto_priority is defined %}
+    max_auto_priority {{ keepalived_max_auto_priority }}
+{% endif %}
 }
 
 {% if keepalived_enable_process_tracking %}

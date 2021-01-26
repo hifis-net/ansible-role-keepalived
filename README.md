@@ -183,6 +183,14 @@ Set the priority of the Keepalived instance:
 keepalived_priority: '99'
 ```
 
+#### Keepalived maximum increased automatic priority
+
+Maximum priority to which Keepalived can automatically increase (must be in
+range [0, 99] or -1 to disable):
+```yaml
+keepalived_max_auto_priority: '99'
+```
+
 #### Keepalived instance router ID
 
 Set unique name of the Keepalived router:
