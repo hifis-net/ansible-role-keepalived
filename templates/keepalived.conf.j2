@@ -19,11 +19,17 @@ global_defs {
 {% if keepalived_router_id is defined %}
     router_id {{ keepalived_router_id }}
 {% endif %}
+{% if keepalived_max_auto_priority is defined %}
+    max_auto_priority {{ keepalived_max_auto_priority }}
+{% endif %}
 }
 
 {% if keepalived_enable_process_tracking %}
 vrrp_track_process {{ keepalived_track_process }} {
     process {{ keepalived_track_process }}
+{% if keepalived_weight is defined %}
+    weight {{ keepalived_weight }}
+{% endif %}
     quorum 1
     delay 2
 }
@@ -33,7 +39,7 @@ vrrp_track_process {{ keepalived_track_process }} {
 vrrp_script {{ keepalived_script_name }} {
     script "{{ keepalived_script_command }}"
     interval 2
-{% if weight is defined %}
+{% if keepalived_weight is defined %}
     weight {{ keepalived_weight }}
 {% endif %}
 }
