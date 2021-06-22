@@ -20,6 +20,11 @@ Group your changes into these categories:
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v1.0.0...main)
 
+### Added
+- Automate Ansible Galaxy role import
+  ([!50](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/50)
+  by [Normo](https://gitlab.com/Normo)).
+
 ### Changed
 - Bump keepalived from 2.2.1 to 2.2.2
   ([!53](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/53)
