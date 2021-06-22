@@ -29,6 +29,9 @@ Group your changes into these categories:
 - Bump keepalived from 2.2.1 to 2.2.2
   ([!53](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/53)
   by [Normo](https://gitlab.com/Normo)).
+- Use FQDN for Ansible modules
+  ([!52](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/52)
+  by [Normo](https://gitlab.com/Normo)).
 
 ## [1.0.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v1.0.0) - 2021-01-26
 
