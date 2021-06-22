@@ -10,7 +10,7 @@ driver:
   name: docker
 platforms:
   - name: instance_keepalived
-    image: jrei/systemd-ubuntu:20.04
+    image: geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu2004}-ansible:latest
     pre_build_image: true
     privileged: true
     override_command: false
