@@ -20,6 +20,11 @@ Group your changes into these categories:
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v1.0.0...main)
 
+### Changed
+- Bump keepalived from 2.2.1 to 2.2.2
+  ([!53](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/53)
+  by [Normo](https://gitlab.com/Normo)).
+
 ## [1.0.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v1.0.0) - 2021-01-26
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.5.0...v1.0.0)
