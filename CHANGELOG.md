@@ -16,9 +16,9 @@ Group your changes into these categories:
 
 `Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`.
 
-## Unreleased
+## [1.1.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v1.1.0) - 2021-06-28
 
-[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v1.0.0...main)
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v1.0.0...v1.1.0)
 
 ### Added
 - Automate Ansible Galaxy role import
