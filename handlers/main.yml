@@ -6,14 +6,14 @@
 ---
 - name: Restart Keepalived
   become: yes
-  service:
+  ansible.builtin.service:
     name: keepalived
     state: restarted
     daemon_reload: yes
 
 - name: Reload Keepalived
   become: yes
-  service:
+  ansible.builtin.service:
     name: keepalived
     state: reloaded
     daemon_reload: yes

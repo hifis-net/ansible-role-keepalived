@@ -9,7 +9,7 @@
   hosts: all
   tasks:
     - name: Install dependencies
-      apt:
+      ansible.builtin.apt:
         name:
           - sudo      # for `become` privilege escalation
           - iproute2  # for gathering network facts

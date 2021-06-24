@@ -5,7 +5,7 @@
 
 ---
 - name: Check that all mandatory variables are defined.
-  assert:
+  ansible.builtin.assert:
     that:
       - keepalived_unicast_peers is defined
       - keepalived_virtual_ip_address is defined or keepalived_virtual_ipaddress_configs is defined
@@ -14,14 +14,14 @@
 
 - name: Install dependencies for Keepalived.
   become: yes
-  package:
+  ansible.builtin.package:
     name: "{{ keepalived_dependencies }}"
     state: present
     update_cache: yes
 
 - name: Create Keepalived Configuration Directory.
   become: yes
-  file:
+  ansible.builtin.file:
     path: "{{ keepalived_conf_dir }}"
     state: directory
     owner: root
@@ -29,12 +29,12 @@
     mode: '0755'
 
 - name: Check whether Keepalived binary is installed.
-  stat:
+  ansible.builtin.stat:
     path: "{{ keepalived_executable_path }}"
   register: keepalived_installed
 
 - name: Get Keepalived version.
-  command:
+  ansible.builtin.command:
     cmd: "{{ keepalived_executable_path }} --version"
   register: keepalived_version_installed
   when: keepalived_installed.stat.exists
@@ -42,17 +42,17 @@
   check_mode: no
 
 - name: Put value of installed version into an Ansible fact.
-  set_fact:
+  ansible.builtin.set_fact:
     installed_keepalived_version: "{{ keepalived_version_installed.stderr | regex_search('^Keepalived v(\\d+\\.\\d+\\.\\d+)', '\\1') | first }}"
   when: keepalived_installed.stat.exists
 
 - name: Output version strings of installed and to be installed Keepalived.
-  debug:
+  ansible.builtin.debug:
     msg: "Installed version: {{ installed_keepalived_version }}, version to be installed: {{ keepalived_version }}."
   when: installed_keepalived_version is defined
 
 - name: Check if both version strings are equal.
-  set_fact:
+  ansible.builtin.set_fact:
     is_keepalived_version_equal: "{{ installed_keepalived_version is version(keepalived_version, operator='==', strict=True) }}"
   when: keepalived_installed.stat.exists
 
@@ -69,12 +69,12 @@
       check_mode: no
 
     - name: Store temporary build directory path
-      set_fact:
+      ansible.builtin.set_fact:
         keepalived_build_dir: "{{ tempdir.path }}"
 
     - name: Download and extract keepalived archive.
       become: yes
-      unarchive:
+      ansible.builtin.unarchive:
         src: "{{ keepalived_download_url }}"
         dest: "{{ keepalived_build_dir }}"
         remote_src: yes
@@ -86,25 +86,25 @@
 
     - name: Configure Keepalived to be build.
       become: yes
-      command: "./configure"
+      ansible.builtin.command: "./configure"
       args:
         chdir: "{{ keepalived_build_dir }}"
 
     - name: Build Keepalived from source.
       become: yes
-      make:
+      community.general.make:
         chdir: "{{ keepalived_build_dir }}"
 
     - name: Install Keepalived binaries.
       become: yes
-      make:
+      community.general.make:
         chdir: "{{ keepalived_build_dir }}"
         target: install
       notify: Restart Keepalived
 
     - name: Copy Keepalived sysconfig file
       become: yes
-      copy:
+      ansible.builtin.copy:
         src: "{{ keepalived_build_dir }}/keepalived/etc/sysconfig/keepalived"
         dest: "{{ keepalived_sysconfig_file_path }}"
         owner: root
@@ -115,14 +115,14 @@
   always:
     - name: Remove temporary build directory
       become: yes
-      file:
+      ansible.builtin.file:
         path: "{{ keepalived_build_dir }}"
         state: absent
       check_mode: no
 
 - name: Create Configuration File.
   become: yes
-  template:
+  ansible.builtin.template:
     src: "{{ keepalived_conf_template }}"
     dest: "{{ keepalived_conf_file_path }}"
     owner: root
@@ -132,13 +132,13 @@
 
 - name: Verify Keepalived configuration.
   become: yes
-  command:
+  ansible.builtin.command:
     cmd: "{{ keepalived_executable_path | quote }} --config-test {{ keepalived_conf_file_path | quote }}"
   register: config_check
   changed_when: config_check.rc != 0
 
 - name: Create Keepalived Service Unit File.
-  template:
+  ansible.builtin.template:
     src: "{{ keepalived_service_template }}"
     dest: "{{ keepalived_service_file_path }}"
     owner: root
@@ -148,7 +148,7 @@
 
 - name: Start Keepalived Systemd Service.
   become: yes
-  service:
+  ansible.builtin.service:
     name: keepalived
     state: started
     enabled: yes
