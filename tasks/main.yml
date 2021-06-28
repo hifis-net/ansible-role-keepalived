@@ -33,6 +33,10 @@
     path: "{{ keepalived_executable_path }}"
   register: keepalived_installed
 
+- name: Determine if this is an initial dry-run
+  ansible.builtin.set_fact:
+    initial_dry_run: "{{ ansible_check_mode and not keepalived_installed.stat.exists }}"
+
 - name: Get Keepalived version.
   ansible.builtin.command:
     cmd: "{{ keepalived_executable_path }} --version"
@@ -153,5 +157,6 @@
     state: started
     enabled: yes
     daemon_reload: yes
+  when: not initial_dry_run
 
 ...

@@ -32,6 +32,9 @@ Group your changes into these categories:
 - Use FQDN for Ansible modules
   ([!52](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/52)
   by [Normo](https://gitlab.com/Normo)).
+- Make a dry-run part of molecule default scenario
+  ([!49](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/49)
+  by [Normo](https://gitlab.com/Normo)).
 
 ## [1.0.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v1.0.0) - 2021-01-26
 

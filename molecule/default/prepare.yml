@@ -15,5 +15,6 @@
           - iproute2  # for gathering network facts
           - psmisc    # provides `killall` command
         state: present
+        update_cache: yes
 
 ...

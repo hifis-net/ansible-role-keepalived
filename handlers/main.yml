@@ -10,6 +10,7 @@
     name: keepalived
     state: restarted
     daemon_reload: yes
+  when: not initial_dry_run
 
 - name: Reload Keepalived
   become: yes
@@ -17,5 +18,6 @@
     name: keepalived
     state: reloaded
     daemon_reload: yes
+  when: not initial_dry_run
 
 ...
