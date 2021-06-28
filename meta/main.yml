@@ -6,6 +6,7 @@
 ---
 galaxy_info:
   role_name: keepalived
+  namespace: hifis
   author: HIFIS Software Team
   description: A role to set up Keepalived in a high availability and scalability context.
   company: Helmholtz Association

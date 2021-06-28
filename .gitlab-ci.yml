@@ -56,7 +56,7 @@ molecule:
     - apk update && apk add --no-cache
       python3-dev py3-pip gcc git curl build-base
       autoconf automake py3-cryptography linux-headers
-      musl-dev libffi-dev openssl-dev openssh
+      musl-dev libffi-dev openssl-dev openssh cargo
     # Output version string of tools used.
     - docker info
     - python3 --version
