@@ -98,6 +98,7 @@
       become: yes
       community.general.make:
         chdir: "{{ keepalived_build_dir }}"
+      when: not initial_dry_run
 
     - name: Install Keepalived binaries.
       become: yes
@@ -105,6 +106,7 @@
         chdir: "{{ keepalived_build_dir }}"
         target: install
       notify: Restart Keepalived
+      when: not initial_dry_run
 
     - name: Copy Keepalived sysconfig file
       become: yes
