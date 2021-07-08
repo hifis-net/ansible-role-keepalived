@@ -16,7 +16,9 @@ Group your changes into these categories:
 
 `Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`.
 
-## Unreleased
+## [1.1.1](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v1.1.1) - 2021-07-08
+
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v1.1.0...v1.1.1)
 
 ### Fixed
 - Fix failing built of Keepalived from source with module make in initial dry-runs
