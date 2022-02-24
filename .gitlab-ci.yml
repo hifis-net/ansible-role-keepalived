@@ -31,7 +31,7 @@ variables:
 
 validate:
   stage: lint
-  image: python:3.8
+  image: python:3.9
   variables: *cache_variables
   before_script:
     - *before_script
@@ -45,10 +45,10 @@ validate:
 
 molecule:
   stage: test
-  image: docker:latest
+  image: docker:20.10.12-alpine3.15
   variables: *cache_variables
   services:
-    - docker:dind
+    - docker:20.10.12-dind-alpine3.15
   before_script:
     # Install Molecule dependencies for use with GitLab CI
     # which are recommended by the Molecule docs:
