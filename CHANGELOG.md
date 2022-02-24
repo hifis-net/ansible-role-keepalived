@@ -16,6 +16,16 @@ Group your changes into these categories:
 
 `Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`.
 
+## Unreleased
+
+[List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v1.1.1...main)
+
+### Fixed
+
+- Fix failing CI pipeline
+  ([!57](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/57)
+  by [tobiashuste](https://gitlab.com/tobiashuste)).
+
 ## [1.1.1](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v1.1.1) - 2021-07-08
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v1.1.0...v1.1.1)
