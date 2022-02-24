@@ -93,6 +93,7 @@
       ansible.builtin.command: "./configure"
       args:
         chdir: "{{ keepalived_build_dir }}"
+      changed_when: true
 
     - name: Build Keepalived from source.
       become: yes
