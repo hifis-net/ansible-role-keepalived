@@ -53,7 +53,7 @@ keepalived_virtual_ipaddress_configs:
 Variable to pin the Keepalived version to a certain value:
 
 ```yaml
-keepalived_version: '2.2.2'
+keepalived_version: '2.2.7'
 ```
 
 #### List of dependencies of Keepalived
@@ -84,7 +84,7 @@ keepalived_executable_path: '/usr/local/sbin/keepalived'
 URL from which Keepalived can be downloaded:
 
 ```yaml
-keepalived_download_url: 'https://www.keepalived.org/software/keepalived-2.2.0.tar.gz'
+keepalived_download_url: 'https://www.keepalived.org/software/keepalived-{{ keepalived_version }}.tar.gz'
 ```
 
 #### Keepalived configuration file template name

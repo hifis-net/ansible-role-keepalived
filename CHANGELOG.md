@@ -26,11 +26,18 @@ Group your changes into these categories:
   ([!57](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/57)
   by [tobiashuste](https://gitlab.com/tobiashuste)).
 
+### Changed
+
+- Install Keepalived 2.2.7 by default
+  ([!58](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/58)
+  by [christian.hueser.hzdr](https://gitlab.com/christian.hueser.hzdr)).
+
 ## [1.1.1](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v1.1.1) - 2021-07-08
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v1.1.0...v1.1.1)
 
 ### Fixed
+
 - Fix failing built of Keepalived from source with module make in initial dry-runs
   ([!55](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/55)
   by [christian.hueser.hzdr](https://gitlab.com/christian.hueser.hzdr)).
@@ -40,11 +47,13 @@ Group your changes into these categories:
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v1.0.0...v1.1.0)
 
 ### Added
+
 - Automate Ansible Galaxy role import
   ([!50](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/50)
   by [Normo](https://gitlab.com/Normo)).
 
 ### Changed
+
 - Bump keepalived from 2.2.1 to 2.2.2
   ([!53](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/53)
   by [Normo](https://gitlab.com/Normo)).
@@ -60,11 +69,13 @@ Group your changes into these categories:
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.5.0...v1.0.0)
 
 ### Added
+
 - Add keepalived config verification task
   ([!42](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/42)
   by [Normo](https://gitlab.com/Normo)).
 
 ### Changed
+
 - Resolve "Refactor file path variables"
   ([!35](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/35)
   by [Normo](https://gitlab.com/Normo)).
@@ -87,12 +98,12 @@ Group your changes into these categories:
   ([!44](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/44)
   by [Normo](https://gitlab.com/Normo)).
 
-
 ## [0.5.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.5.0) - 2021-01-21
 
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.4.0...v0.5.0)
 
 ### Upgrade notes
+
 The keepalived executable has been moved from the build directory
 `/usr/local/src/keepalived-x.y.z/sbin/keepalived` to
 `/usr/local/sbin/keepalived`. Due to this fact, the build directory of the
@@ -100,6 +111,7 @@ previous version is not removed during an upgrade. This needs to be done
 manually.
 
 ### Changed
+
 - Put sysconfig file into config directory
   ([!12](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/12)
   by [christian.hueser.hzdr](https://gitlab.com/christian.hueser.hzdr))
@@ -111,6 +123,7 @@ manually.
   by [Normo](https://gitlab.com/Normo)).
 
 ### Fixed
+
 - Resolve "Upgrading Keepalived executable does not work as expected due to
   wrong path variables"
   ([!32](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/32)
@@ -121,6 +134,7 @@ manually.
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.3.0...v0.4.0)
 
 ### Added
+
 - Enable check-mode
   ([!27](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/27)
   by [Normo](https://gitlab.com/Normo)).
@@ -130,6 +144,7 @@ manually.
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.1...v0.3.0)
 
 ### Changed
+
 - Enable keepalived process tracking
   ([!19](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/19)
   by [tobiashuste](https://gitlab.com/tobiashuste)).
@@ -141,6 +156,7 @@ manually.
   by [tobiashuste](https://gitlab.com/tobiashuste))
 
 ### Fixed
+
 - Fix runtime directory not being available after reboot
   ([!20](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/20)
   by [tobiashuste](https://gitlab.com/tobiashuste)).
@@ -150,6 +166,7 @@ manually.
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.2.0...v0.2.1)
 
 ### Fixed
+
 - Fix mandatory variables check for `keepalived_virtual_ipaddress_configs`
   ([!17](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/17)
   by [tobiashuste](https://gitlab.com/tobiashuste)).
@@ -159,6 +176,7 @@ manually.
 [List of commits](https://gitlab.com/hifis/ansible/keepalived-role/-/compare/v0.1.0...v0.2.0)
 
 ### Added
+
 - Optionally allow to specify multiple virtual IP addresses
 ([!16](https://gitlab.com/hifis/ansible/keepalived-role/-/merge_requests/16)
 by [tobiashuste](https://gitlab.com/tobiashuste)).
@@ -166,4 +184,5 @@ by [tobiashuste](https://gitlab.com/tobiashuste)).
 ## [0.1.0](https://gitlab.com/hifis/ansible/keepalived-role/-/releases/v0.1.0) - 2020-08-14
 
 ### Added
+
 Initial release of the Ansible Keepalived Role.
