@@ -1,0 +1,83 @@
+# SPDX-FileCopyrightText: 2022 Helmholtz Centre for Environmental Research (UFZ)
+# SPDX-FileCopyrightText: 2022 Helmholtz-Zentrum Dresden-Rossendorf (HZDR)
+#
+# SPDX-License-Identifier: Apache-2.0
+
+---
+name: CI
+on:
+  pull_request:
+  push:
+    branches:
+      - "main"
+    tags:
+      - "v*.*.*"
+  schedule:
+    - cron: '0 1 * * *'
+
+env:
+  PY_COLORS: 1
+  ANSIBLE_FORCE_COLOR: 1
+
+jobs:
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v3
+
+      - name: Prepare the job environment.
+        uses: ./.github/workflows/prepare-action
+
+      - name: Lint code.
+        run: pipenv run molecule lint
+
+  license_compliance:
+    name: Check license compliance with reuse.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v3
+
+      - name: Prepare the job environment.
+        uses: ./.github/workflows/prepare-action
+
+      - name: Lint code.
+        run: pipenv run reuse lint
+
+  test:
+    name: Run Molecule tests.
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        distro:
+          - ubuntu2004
+
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v3
+
+      - name: Prepare the job environment.
+        uses: ./.github/workflows/prepare-action
+
+      - name: Run Molecule tests.
+        run: pipenv run molecule test
+        env:
+          MOLECULE_DISTRO: ${{ matrix.distro }}
+
+  release:
+    name: Release new version on Ansible Galaxy
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [lint, license_compliance, test]
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: galaxy
+        uses: robertdebock/galaxy-action@1.2.0
+        with:
+          galaxy_api_key: ${{ secrets.galaxy_api_key }}
+          git_branch: "main"
