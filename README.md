@@ -1,13 +1,21 @@
 <!--
-SPDX-FileCopyrightText: 2020 Helmholtz Centre for Environmental Research (UFZ)
-SPDX-FileCopyrightText: 2020 Helmholtz-Zentrum Dresden-Rossendorf (HZDR)
+SPDX-FileCopyrightText: 2022 Helmholtz Centre for Environmental Research (UFZ)
+SPDX-FileCopyrightText: 2022 Helmholtz-Zentrum Dresden-Rossendorf (HZDR)
 
 SPDX-License-Identifier: Apache-2.0
 -->
 
-# Keepalived_Role
+# Keepalived Role
 
-A role to set up Keepalived in a high availability and scalability context.
+[![CI Status](https://github.com/hifis-net/ansible-role-keepalived/actions/workflows/ci.yml/badge.svg)](https://github.com/hifis-net/ansible-role-keepalived/actions/workflows/ci.yml)
+[![Ansible Galaxy Role](https://img.shields.io/ansible/role/52836?color=orange)](https://galaxy.ansible.com/hifis/keepalived)
+[![Ansible Galaxy Role downloads](https://img.shields.io/ansible/role/d/52836)](https://galaxy.ansible.com/hifis/keepalived)
+[![Ansible Galaxy quality score](https://img.shields.io/ansible/quality/52836)](https://galaxy.ansible.com/hifis/keepalived)
+[![Apache-2.0 Licensed](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/hifis-net/ansible-role-keepalived/blob/main/LICENSES/Apache-2.0.txt)
+[![Latest release](https://img.shields.io/github/v/release/hifis-net/ansible-role-keepalived)](https://github.com/hifis-net/ansible-role-keepalived/releases)
+
+
+Ansible role to set up Keepalived in a high availability and scalability context.
 
 ## Requirements
 
