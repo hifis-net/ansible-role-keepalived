@@ -15,7 +15,7 @@ molecule = {extras = ["docker"], version = "~=3.6.1"}
 reuse = "~=0.14.0"
 
 [packages]
-ansible = "~=5.7.1"
+ansible = "~=5.8.0"
 
 [requires]
 python_version = "3.9"
