@@ -14,7 +14,7 @@ galaxy_info:
   issue_tracker_url: https://gitlab.com/hifis/ansible/keepalived-role/-/issues
 
   license: Apache-2.0
-  min_ansible_version: 2.10
+  min_ansible_version: "2.10"
 
   platforms:
     - name: Ubuntu
