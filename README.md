@@ -14,8 +14,12 @@ SPDX-License-Identifier: Apache-2.0
 [![Apache-2.0 Licensed](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/hifis-net/ansible-role-keepalived/blob/main/LICENSES/Apache-2.0.txt)
 [![Latest release](https://img.shields.io/github/v/release/hifis-net/ansible-role-keepalived)](https://github.com/hifis-net/ansible-role-keepalived/releases)
 
-
 Ansible role to set up Keepalived in a high availability and scalability context.
+
+Currently [supported platforms](meta/main.yml) are:
+
+- Ubuntu 22.04 LTS
+- Ubuntu 20.04 LTS
 
 ## Requirements
 
