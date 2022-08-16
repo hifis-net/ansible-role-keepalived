@@ -7,17 +7,17 @@
 dependency:
   name: galaxy
 driver:
-  name: docker
+  name: podman
 platforms:
-  - name: instance_keepalived
-    image: geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu2004}-ansible:latest
+  - name: instancekeepalived
+    image: ${MOLECULE_IMAGE:-ghcr.io/hifis-net/ubuntu-systemd:20.04}
     pre_build_image: true
     privileged: true
     override_command: false
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    systemd: true
+    tty: true
 lint: |
-  set -e
+  set -e &&
   yamllint --strict --format colored . &&
   ansible-lint -v --force-color --offline --exclude .pipenv/
 provisioner:
