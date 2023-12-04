@@ -17,7 +17,7 @@ runs:
       uses: actions/setup-python@v3
       id: setup-python
       with:
-        python-version: '3.9'
+        python-version: '3.11'
         cache: 'pipenv'
 
     - name: Install dependencies via pipenv.
