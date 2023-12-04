@@ -13,24 +13,24 @@ platforms:
     image: ${MOLECULE_IMAGE:-ghcr.io/hifis-net/ubuntu-systemd:22.04}
     pre_build_image: true
     privileged: true
-    override_command: false
-    systemd: true
+    systemd: always
     tty: true
-lint: |
-  set -e &&
-  yamllint --strict --format colored . &&
-  ansible-lint -v --force-color --offline --exclude .pipenv/
+    override_command: false
 provisioner:
   name: ansible
+  config_options:
+    defaults:
+      stdout_callback: "yaml"
   playbooks:
     prepare: prepare.yml
+    check: converge.yml
     converge: converge.yml
+    verify: verify.yml
 verifier:
   name: ansible
 scenario:
   name: default
   test_sequence:
-    - lint
     - destroy
     - dependency
     - syntax
