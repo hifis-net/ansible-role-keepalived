@@ -1,22 +1,34 @@
 # Changelog
 
-## [Unreleased](https://github.com/hifis-net/ansible-role-keepalived/tree/HEAD)
+## [v1.2.0](https://github.com/hifis-net/ansible-role-keepalived/tree/v1.2.0) (2023-12-13)
 
-[Full Changelog](https://github.com/hifis-net/ansible-role-keepalived/compare/v1.1.1...HEAD)
+[Full Changelog](https://github.com/hifis-net/ansible-role-keepalived/compare/v1.1.1...v1.2.0)
 
 **Implemented enhancements:**
 
 - Switch to molecule-podman instead of molecule-docker [\#27](https://github.com/hifis-net/ansible-role-keepalived/issues/27)
 - Add badges to README [\#6](https://github.com/hifis-net/ansible-role-keepalived/issues/6)
 
+**Fixed bugs:**
+
+- Specify which paths to lint with ansible-lint in the molecule lint stage [\#45](https://github.com/hifis-net/ansible-role-keepalived/issues/45)
+
 **Closed issues:**
 
+- Add GitHub Changelog generator config [\#77](https://github.com/hifis-net/ansible-role-keepalived/issues/77)
 - Add CODEOWNERS file [\#75](https://github.com/hifis-net/ansible-role-keepalived/issues/75)
+- Add CITATION.cff [\#74](https://github.com/hifis-net/ansible-role-keepalived/issues/74)
 - Add support for Ubuntu 22.04 [\#26](https://github.com/hifis-net/ansible-role-keepalived/issues/26)
 
 **Merged pull requests:**
 
+- Bump ansible from 9.0.1 to 9.1.0 [\#82](https://github.com/hifis-net/ansible-role-keepalived/pull/82) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore: bump keepalived version from 2.2.7 to 2.2.8 [\#81](https://github.com/hifis-net/ansible-role-keepalived/pull/81) ([Normo](https://github.com/Normo))
+- Bump ansible from 8.5.0 to 9.0.1 [\#80](https://github.com/hifis-net/ansible-role-keepalived/pull/80) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore: add github changelog generator config [\#79](https://github.com/hifis-net/ansible-role-keepalived/pull/79) ([Normo](https://github.com/Normo))
 - Add CODEOWNERS file [\#78](https://github.com/hifis-net/ansible-role-keepalived/pull/78) ([Normo](https://github.com/Normo))
+- Add CITATION.cff [\#76](https://github.com/hifis-net/ansible-role-keepalived/pull/76) ([Normo](https://github.com/Normo))
+- ci: make ci workflow working again [\#73](https://github.com/hifis-net/ansible-role-keepalived/pull/73) ([Normo](https://github.com/Normo))
 - Bump ansible-lint from 6.8.4 to 6.8.6 [\#50](https://github.com/hifis-net/ansible-role-keepalived/pull/50) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump ansible-lint from 6.8.3 to 6.8.4 [\#48](https://github.com/hifis-net/ansible-role-keepalived/pull/48) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump ansible-lint from 6.8.2 to 6.8.3 [\#47](https://github.com/hifis-net/ansible-role-keepalived/pull/47) ([dependabot[bot]](https://github.com/apps/dependabot))

@@ -34,5 +34,5 @@ authors:
     orcid: 'https://orcid.org/0000-0002-5028-6663'
 repository-code: 'https://github.com/hifis-net/ansible-role-keepalived'
 repository-artifact: 'https://galaxy.ansible.com/hifis/keepalived'
-version: 'v1.1.1'
-date-released: '2021-07-08'
+version: 'v1.2.0'
+date-released: '2023-12-13'
