@@ -8,9 +8,8 @@ SPDX-License-Identifier: Apache-2.0
 # Keepalived Role
 
 [![CI Status](https://github.com/hifis-net/ansible-role-keepalived/actions/workflows/ci.yml/badge.svg)](https://github.com/hifis-net/ansible-role-keepalived/actions/workflows/ci.yml)
-[![Ansible Galaxy Role](https://img.shields.io/ansible/role/52836?color=orange)](https://galaxy.ansible.com/hifis/keepalived)
-[![Ansible Galaxy Role downloads](https://img.shields.io/ansible/role/d/52836)](https://galaxy.ansible.com/hifis/keepalived)
-[![Ansible Galaxy quality score](https://img.shields.io/ansible/quality/52836)](https://galaxy.ansible.com/hifis/keepalived)
+[![Ansible Role: hifis.keepalived](https://img.shields.io/badge/role-hifis.keepalived-blue)](https://galaxy.ansible.com/ui/standalone/roles/hifis/keepalived/)
+[![Ansible Role Downloads](https://img.shields.io/ansible/role/d/hifis/keepalived)](https://galaxy.ansible.com/ui/standalone/roles/hifis/keepalived/)
 [![Apache-2.0 Licensed](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/hifis-net/ansible-role-keepalived/blob/main/LICENSES/Apache-2.0.txt)
 [![Latest release](https://img.shields.io/github/v/release/hifis-net/ansible-role-keepalived)](https://github.com/hifis-net/ansible-role-keepalived/releases)
 
