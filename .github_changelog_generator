@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2023 Helmholtz Centre for Environmental Research (UFZ)
+# SPDX-FileCopyrightText: 2023 Helmholtz-Zentrum Dresden-Rossendorf (HZDR)
+#
+# SPDX-License-Identifier: Apache-2.0
+
+user=hifis-net
+project=ansible-role-keepalived
+since-tag=v1.1.1
+base=HISTORY.md
