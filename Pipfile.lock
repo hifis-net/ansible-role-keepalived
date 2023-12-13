@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1f6994a41be8d83b6bdbd06586c624716ea74c85728629817c4f0a27dee2c935"
+            "sha256": "b92c21356357bc0929a5bb5cf767929397fc9189fd80d7a34debcbcb4ebd37f3"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,20 +18,20 @@
     "default": {
         "ansible": {
             "hashes": [
-                "sha256:4e758da22ff7a95ed2ab30cef12860407be68f65527af66a5b828739f634415a",
-                "sha256:cc06c251f142837cf540b7977724596a94f3d0fe9da9619175e9de6539cd0705"
+                "sha256:5ad94991fb0e0e53a770a9ffcf1b68047f61b2282d948a7d2682ecd8fb8fa1bf",
+                "sha256:bd88f16ca4b4dadfec78723f982c0f04e5481c6be497ccb43ea3b40fded39126"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.10'",
-            "version": "==9.0.1"
+            "version": "==9.1.0"
         },
         "ansible-core": {
             "hashes": [
-                "sha256:6b4870ac65b708953e1509b8ccca669731a17d2beadabd8208c9f90d189058ca",
-                "sha256:b4a6c60fbc2f51e3ae68ec733c931ef957a04d7c8c92aa39242990b0f8adf149"
+                "sha256:494f002edcb17b02baef661ff27b8c9c750a534bdc0537ab29dc02e680817d92",
+                "sha256:e4ab559e7e525b1c6f99084fca873bb014775d5ecbe845b7c07b8e9d6c9c048b"
             ],
             "markers": "python_version >= '3.10'",
-            "version": "==2.16.0"
+            "version": "==2.16.2"
         },
         "cffi": {
             "hashes": [
