@@ -65,7 +65,7 @@ keepalived_virtual_ipaddress_configs:
 Variable to pin the Keepalived version to a certain value:
 
 ```yaml
-keepalived_version: '2.2.7'
+keepalived_version: '2.2.8'
 ```
 
 #### List of dependencies of Keepalived
