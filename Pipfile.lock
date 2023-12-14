@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b92c21356357bc0929a5bb5cf767929397fc9189fd80d7a34debcbcb4ebd37f3"
+            "sha256": "60c28511363f53bc6920adfdc9375de5b37683664965dbf653103795a81eabfa"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -284,11 +284,11 @@
         },
         "ansible-core": {
             "hashes": [
-                "sha256:351278fb8685fec1d645e2ddcfdca0c73456ff1db06426b86b6dd53774f7d7ba",
-                "sha256:fab3a5994482991274cae17500ca852007dbd76f564418f172f07cb00edbb293"
+                "sha256:494f002edcb17b02baef661ff27b8c9c750a534bdc0537ab29dc02e680817d92",
+                "sha256:e4ab559e7e525b1c6f99084fca873bb014775d5ecbe845b7c07b8e9d6c9c048b"
             ],
-            "markers": "python_version >= '3.9'",
-            "version": "==2.15.6"
+            "markers": "python_version >= '3.10'",
+            "version": "==2.16.2"
         },
         "ansible-lint": {
             "hashes": [
@@ -706,11 +706,12 @@
         },
         "molecule": {
             "hashes": [
-                "sha256:b919353f799746de60b16a27575627783e39c268fdf2f2aa0372f0162c7b5478",
-                "sha256:f4e941017587d6aadf4c75ec55338d16c17ad6119a2f8306cfe7b9e05d49db11"
+                "sha256:8e5d7a7841f9ed5dd26878d24951ec030b86f780aca17ffc509db8076f42de3d",
+                "sha256:d2a881062fcc5ef1e08c1e5127c04354d2c95171955e270bd82b3fbfef72d3b0"
             ],
             "index": "pypi",
-            "version": "==6.0.2"
+            "markers": "python_version >= '3.9'",
+            "version": "==6.0.3"
         },
         "molecule-plugins": {
             "extras": [
@@ -845,11 +846,11 @@
         },
         "referencing": {
             "hashes": [
-                "sha256:81a1471c68c9d5e3831c30ad1dd9815c45b558e596653db751a2bfdd17b3b9ec",
-                "sha256:c19c4d006f1757e3dd75c4f784d38f8698d87b649c54f9ace14e5e8c9667c01d"
+                "sha256:689e64fe121843dcfd57b71933318ef1f91188ffb45367332700a86ac8fd6161",
+                "sha256:bdcd3efb936f82ff86f993093f6da7435c7de69a3b3a5a06678a6050184bee99"
             ],
             "markers": "python_version >= '3.8'",
-            "version": "==0.31.1"
+            "version": "==0.32.0"
         },
         "requests": {
             "hashes": [
