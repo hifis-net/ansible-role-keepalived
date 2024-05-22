@@ -4,6 +4,10 @@
 # SPDX-License-Identifier: Apache-2.0
 
 ---
+- name: Deprecation notice.
+  ansible.builtin.debug:
+    msg: "DEPRECATION NOTICE: This role has been migrated to the hifis.toolkit collection (https://github.com/hifis-net/ansible-collection-toolkit)."
+
 - name: Check that all mandatory variables are defined.
   ansible.builtin.assert:
     that:
